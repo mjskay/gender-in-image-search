@@ -323,10 +323,6 @@ mturk template for that task is available at `mturk/label_gender_task.html`.
 
 #### Representativeness of filtered dataset
  
-```Figure 1. Comparison of empirical cumulative distribution functions of gender
-distributions in the full set of BLS occupations and our filtered dataset,
-showing similar distribution.```
-
 A requirement of this study was to obtain a representative dataset of images of
 individuals in different occupations with properly labelled gender. This
 required some filtering to ensure that images had correctly labelled genders,
