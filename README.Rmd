@@ -451,6 +451,8 @@ search results on the logit of the proportion of women in BLS, thus not
 exhibiting an s-curve:
 
 ```{r nonstereotyped_model}
+library(boot) # for logit, inv.logit (could use qlogis/plogis but this is clearer) 
+
 m.nonstereotyped = glm(search_p_women ~ logit(bls_p_women),
     family=quasibinomial, data=proportions, weights=search_n)
 
