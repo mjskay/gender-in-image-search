@@ -3,7 +3,6 @@
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img
 alt="This work is licensed under a Creative Commons Attribution 4.0 International License" 
 title="This work is licensed under a Creative Commons Attribution 4.0 International License" 
-style="border-width:0; float:right;"
 src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a> _Matthew Kay ([mjskay@uw.edu]
 (mailto:mjskay@uw.edu)), Cynthia Matuszek ([cmat@umbc.edu]
 (mailto:cmat@umbc.edu)), and Sean Munson ([smunson@uw.edu]
