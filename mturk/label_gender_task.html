@@ -1,0 +1,74 @@
+<h3>What people are in this image?</h3>
+<p><style type="text/css">
+table {border: solid gray;border-left-width:2px; border-top-width:2px; border-bottom-width:2px; border-right-width:2px}
+td, tr {border: 0}
+</style></p>
+<script>
+updateGenderCheckboxState = function(enabled) {
+	checkboxes = document.getElementsByClassName("gender_checkbox");
+	for (i = 0; i < checkboxes.length; i++) {
+		c = checkboxes[i];
+		c.disabled = !enabled;
+		if (!enabled) {
+			c.checked = false;
+		}
+	}
+}
+
+</script>
+<table>
+    <tbody>
+        <tr>
+            <td rowspan="4"><img src="${image_url}" alt="" rowspan="4" /></td>
+            <td colspan="2"><b><center>This image contains:</center></b></td>
+            <td bgcolor="#ddddff" rowspan="4">
+            <div style="border: solid 0 #060; border-top-width:r02px; padding-right:1.6ex; padding-left:0ex ">
+            <ul>
+                <li>Choose a radio button for how many people are visible.</li>
+                <br />
+                <li>Then, check <font color="cc0000" size="+1"><b><i> all </i></b></font> boxes that are true for the image.</li>
+                <br />
+                <li>In a picture containing two men and a woman, choose:
+                <ul>
+                    <li><i>More than one person,</i> then</li>
+                    <li><i>Woman/Women</i> <font color="cc0000" size="+1"><b> and </b></font> <i>Man/Men</i>.</li>
+                    <br />
+                </ul>
+                </li>
+                <li><a href="http://homes.cs.washington.edu/~cynthia/image-HIT-instructions.html"><font size="+1">Click here</font></a> for examples of annotated pictures.</li>
+            </ul>
+            </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <div style="border: solid 0 #060; border-right-width:2px; padding-right:1.6ex; padding-left:2.0ex ">
+            <p><input type="radio" value="oneperson" name="howmany" onclick="updateGenderCheckboxState(true);" /> <font size="+1">One Person</font></p>
+            <p><input type="radio" value="multiple" name="howmany" onclick="updateGenderCheckboxState(true);" /> <font size="+1">More than one person</font></p>
+            <p><input type="radio" value="nopeople" name="howmany" onclick="updateGenderCheckboxState(false);" /> <font size="+1">No people</font></p>
+            </div>
+            </td>
+            <td>
+            <div style="border: solid 0 #060;  padding-right:1.6ex; padding-left:1.0ex"><i>select one</i></div>
+            </td>
+        </tr>
+        <tr>
+            <td><font style="font-size:1px; color:#fff">rar</font></td>
+        </tr>
+        <tr>
+            <td>
+            <div style="border: solid 0 #060; border-right-width:2px; padding-right:1.6ex; padding-left:2.0ex">
+            <p><input type="checkbox" class="gender_checkbox" value="woman" name="typeofpeople" /> <font size="+1">Woman/Women</font></p>
+            <p><input type="checkbox" class="gender_checkbox" value="man" name="typeofpeople" /> <font size="+1">Man/Men</font></p>
+            <p><input type="checkbox" class="gender_checkbox" value="child" name="typeofpeople" /> <font size="+1">Child/Children</font></p>
+            <p><input type="checkbox" class="gender_checkbox" value="canttell" name="typeofpeople" /> <font size="+1">Can't tell gender</font></p>
+            </div>
+            </td>
+            <td>
+            <div style="border: solid 0 #060;  padding-right:1.6ex; padding-left:1.0ex"><i><center>select all<br />
+            appropriate</center></i></div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p><input type="hidden" value="${source_url}" name="source_url" />  <input type="hidden" value="${order}" name="order" /> <input type="hidden" value="${search_provider}" name="search_provider" />  <input type="hidden" value="${search_term}" name="search_term" /></p>

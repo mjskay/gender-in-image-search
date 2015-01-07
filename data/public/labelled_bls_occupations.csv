@@ -1,0 +1,97 @@
+occupation,n,p_women,p_black,p_asian,p_hispanic,aggregate,y.n,conjunction,search_term,uncertain_search_term,multiple_search_terms,unique_search_term
+Chief executives,1513000,27.4,3.7,4.2,4.7,FALSE,TRUE,FALSE,chief executive officer,FALSE,FALSE,TRUE
+"Claims adjusters, appraisers, examiners, and investigators",323000,63.4,17.5,3.1,10.3,FALSE,TRUE,FALSE,claims adjuster,FALSE,FALSE,TRUE
+Logisticians,94000,36.8,12.3,2.2,11.9,FALSE,TRUE,FALSE,logistician,FALSE,FALSE,TRUE
+Fundraisers,86000,75.3,5.1,4.6,3.4,FALSE,TRUE,FALSE,fundraiser,FALSE,FALSE,TRUE
+Financial analysts,89000,36.8,3.7,9,6.3,FALSE,TRUE,FALSE,Financial analyst,FALSE,FALSE,TRUE
+Personal financial advisors,378000,31.2,4.8,6.2,4.5,FALSE,TRUE,FALSE,financial advisor,FALSE,FALSE,TRUE
+"Tax examiners and collectors, and revenue agents",82000,62.4,13.9,11.5,13.9,FALSE,TRUE,FALSE,tax collector,FALSE,FALSE,TRUE
+Tax preparers,107000,59.6,10.4,7.1,15.9,FALSE,TRUE,FALSE,tax preparer,FALSE,FALSE,TRUE
+Computer programmers,480000,22.5,5.9,17.3,5.3,FALSE,TRUE,FALSE,computer programmer,FALSE,FALSE,TRUE
+"Software developers, applications and systems software",1084000,19.7,4,29.4,5.2,FALSE,TRUE,FALSE,software developer,FALSE,FALSE,TRUE
+Web developers,190000,33.7,4.1,8,5.6,FALSE,TRUE,FALSE,web developer,FALSE,FALSE,TRUE
+"Architects, except naval",195000,23.5,1.3,6.2,8.2,FALSE,TRUE,FALSE,architect,FALSE,FALSE,TRUE
+"Engineers, all other",359000,13.2,3.9,15.4,5.9,FALSE,TRUE,FALSE,engineer,FALSE,FALSE,TRUE
+Drafters,149000,16.6,3,7.7,9.9,FALSE,TRUE,FALSE,drafter,FALSE,FALSE,TRUE
+Biological scientists,101000,50.1,3.7,11.7,7.2,FALSE,TRUE,FALSE,biologist,FALSE,FALSE,TRUE
+Chemists and materials scientists,105000,44.2,4,9.2,9.4,FALSE,TRUE,FALSE,chemist,FALSE,FALSE,TRUE
+Psychologists,178000,72.7,6,3.9,6.3,FALSE,TRUE,FALSE,psychologist,FALSE,FALSE,TRUE
+Counselors,661000,69.3,19.4,2.9,10.7,FALSE,TRUE,FALSE,counselor,FALSE,FALSE,TRUE
+Social workers,734000,80.6,23,3.1,12.6,FALSE,TRUE,FALSE,social worker,FALSE,FALSE,TRUE
+Clergy,408000,20.5,11.2,4.2,6.1,FALSE,TRUE,FALSE,clergy member,FALSE,FALSE,TRUE
+Lawyers,1061000,31.1,4.4,4.3,4,FALSE,TRUE,FALSE,lawyer,FALSE,FALSE,TRUE
+Paralegals and legal assistants,418000,85.9,10.7,4.6,17,FALSE,TRUE,FALSE,paralegal,FALSE,FALSE,TRUE
+Elementary and middle school teachers,2838000,81.4,9.8,2.1,10.3,FALSE,TRUE,FALSE,primary school teacher,FALSE,FALSE,TRUE
+Secondary school teachers,1127000,57.3,6,3.1,7.6,FALSE,TRUE,FALSE,high school teacher,FALSE,FALSE,TRUE
+Special education teachers,366000,86.2,6.9,1.1,9.4,FALSE,TRUE,FALSE,special ed teacher,FALSE,FALSE,TRUE
+Librarians,181000,86.8,7.9,2.5,2.8,FALSE,TRUE,FALSE,librarian,FALSE,FALSE,TRUE
+Designers,756000,55.3,3.9,5.9,8.9,FALSE,TRUE,FALSE,designer,FALSE,FALSE,TRUE
+Announcers,50000,23.6,12,8.3,15.3,FALSE,TRUE,FALSE,announcer,FALSE,FALSE,TRUE
+Public relations specialists,155000,58.2,7.3,5.8,8,FALSE,TRUE,FALSE,PR person,FALSE,FALSE,TRUE
+Editors,159000,50.7,4.8,3.2,6.5,FALSE,TRUE,FALSE,editor,FALSE,FALSE,TRUE
+Technical writers,58000,55.5,2.7,6.7,3.7,FALSE,TRUE,FALSE,technical writer,FALSE,FALSE,TRUE
+Writers and authors,208000,55.6,5.4,4.2,2.9,FALSE,TRUE,FALSE,author,FALSE,FALSE,TRUE
+Photographers,178000,52.2,6.2,4.3,10.7,FALSE,TRUE,FALSE,photographer,FALSE,FALSE,TRUE
+Chiropractors,58000,22.3,0,3.5,4,FALSE,TRUE,FALSE,chiropractor,FALSE,FALSE,TRUE
+Dentists,167000,24.2,1.7,10.6,2.5,FALSE,TRUE,FALSE,dentist,FALSE,FALSE,TRUE
+Pharmacists,286000,53.7,6.8,18.5,5.1,FALSE,TRUE,FALSE,pharmacist,FALSE,FALSE,TRUE
+Physicians and surgeons,911000,34.3,7.2,18.1,5.2,FALSE,TRUE,FALSE,doctor,FALSE,FALSE,TRUE
+Physical therapists,211000,70.7,4.4,9.1,9.4,FALSE,TRUE,FALSE,physical therapist,FALSE,FALSE,TRUE
+Veterinarians,85000,54.7,1.9,1.3,6.1,FALSE,TRUE,FALSE,veterinarians,FALSE,FALSE,TRUE
+Registered nurses,2875000,90.6,11.5,7.3,6.2,FALSE,TRUE,FALSE,nurse,FALSE,FALSE,TRUE
+Nurse practitioners,103000,86.1,4.5,4.6,2.9,FALSE,TRUE,FALSE,nurse practitioner,FALSE,FALSE,TRUE
+Clinical laboratory technologists and technicians,319000,72.8,13.5,14,10.7,FALSE,TRUE,FALSE,lab tech,FALSE,FALSE,TRUE
+Dental hygienists,163000,99.3,3.3,5.6,8.1,FALSE,TRUE,FALSE,dental hygienist,FALSE,FALSE,TRUE
+Emergency medical technicians and paramedics,172000,31.2,5,1.6,8.1,FALSE,TRUE,FALSE,paramedic,FALSE,FALSE,TRUE
+"Opticians, dispensing",54000,59.6,8.2,3.8,4.1,FALSE,TRUE,FALSE,optician,FALSE,FALSE,TRUE
+Massage therapists,158000,81.5,5.4,7.7,12,FALSE,TRUE,FALSE,massage therapist,FALSE,FALSE,TRUE
+Firefighters,295000,3.4,7.7,1.1,9.9,FALSE,TRUE,FALSE,firefighter,FALSE,FALSE,TRUE
+Detectives and criminal investigators,160000,24.8,9.8,3.5,10.4,FALSE,TRUE,FALSE,detective,FALSE,FALSE,TRUE
+Police and sheriff’s patrol officers,657000,12.6,12.8,3.1,13.8,FALSE,TRUE,FALSE,police officer,FALSE,FALSE,TRUE
+Private detectives and investigators,103000,44,8,2.2,11.1,FALSE,TRUE,FALSE,private investigator,FALSE,FALSE,TRUE
+Security guards and gaming surveillance officers,903000,18.5,26.6,4.1,15.8,FALSE,TRUE,FALSE,security guard,FALSE,FALSE,TRUE
+Crossing guards,61000,55.3,19.7,1.8,16.1,FALSE,TRUE,FALSE,crossing guard,FALSE,FALSE,TRUE
+Chefs and head cooks,403000,21.5,11.9,14.2,18.6,FALSE,TRUE,FALSE,chef,FALSE,FALSE,TRUE
+Cooks,1970000,37.7,16.6,6,31.7,FALSE,TRUE,FALSE,cook,FALSE,FALSE,TRUE
+Bartenders,412000,59.9,5.2,3.5,13.2,FALSE,TRUE,FALSE,bartender,FALSE,FALSE,TRUE
+Dishwashers,271000,18.7,12.9,5.5,40.5,FALSE,TRUE,FALSE,dishwasher,FALSE,FALSE,TRUE
+Janitors and building cleaners,2205000,29.7,18.4,3.6,30.9,FALSE,TRUE,FALSE,custodian,FALSE,FALSE,TRUE
+Maids and housekeeping cleaners,1457000,88.1,17.2,4.8,43.3,FALSE,TRUE,FALSE,housekeeper,FALSE,FALSE,TRUE
+Pest control workers,73000,4.7,7.7,0.1,20.4,FALSE,TRUE,FALSE,exterminator,FALSE,FALSE,TRUE
+Grounds maintenance workers,1298000,5.1,8.7,1.7,44.4,FALSE,TRUE,FALSE,groundskeeper,FALSE,FALSE,TRUE
+Barbers,109000,21.9,38.2,2.5,24.1,FALSE,TRUE,FALSE,barber,FALSE,FALSE,TRUE
+"Hairdressers, hairstylists, and cosmetologists",785000,92.8,13.2,6.5,15,FALSE,TRUE,FALSE,hairdresser,FALSE,FALSE,TRUE
+Tour and travel guides,51000,36.9,3.6,7.1,15.1,FALSE,TRUE,FALSE,tour guide,FALSE,FALSE,TRUE
+Childcare workers,1314000,94.1,15.3,3.3,20.3,FALSE,TRUE,FALSE,childcare worker,FALSE,FALSE,TRUE
+Cashiers,3275000,71.8,17.2,7.3,19.9,FALSE,TRUE,FALSE,cashier,FALSE,FALSE,TRUE
+Insurance sales agents,540000,44.1,8.1,1.8,10.3,FALSE,TRUE,FALSE,insurance sales agent,FALSE,FALSE,TRUE
+Travel agents,73000,79,2.5,9.3,4.8,FALSE,TRUE,FALSE,travel agent,FALSE,FALSE,TRUE
+Real estate brokers and sales agents,761000,57.1,4,4.7,8.7,FALSE,TRUE,FALSE,real estate agent,FALSE,FALSE,TRUE
+Telemarketers,97000,50.3,23,1.1,14.7,FALSE,TRUE,FALSE,telemarketer,FALSE,FALSE,TRUE
+Bill and account collectors,206000,69.1,15.3,3.6,17.6,FALSE,TRUE,FALSE,bill collector,FALSE,FALSE,TRUE
+Tellers,380000,87.3,11.6,5.7,18.6,FALSE,TRUE,FALSE,teller,FALSE,FALSE,TRUE
+Customer service representatives,1956000,67.8,16.2,4.2,18,FALSE,TRUE,FALSE,customer service representative,FALSE,FALSE,TRUE
+Receptionists and information clerks,1237000,91.5,12.1,4.3,17.9,FALSE,TRUE,FALSE,receptionist,FALSE,FALSE,TRUE
+Couriers and messengers,213000,15.5,13,2.4,16.9,FALSE,TRUE,FALSE,courier,FALSE,FALSE,TRUE
+Postal service mail carriers,318000,37.7,16.5,6.7,8.8,FALSE,TRUE,FALSE,mail carrier,FALSE,FALSE,TRUE
+Secretaries and administrative assistants,2904000,95.3,8.6,3.2,10.3,FALSE,TRUE,FALSE,administrative assistant,FALSE,FALSE,TRUE
+Word processors and typists,119000,88.7,12.4,2.8,12.9,FALSE,TRUE,FALSE,typist,FALSE,FALSE,TRUE
+Carpenters,1223000,1.6,4.2,1.9,29,FALSE,TRUE,FALSE,carpenter,FALSE,FALSE,TRUE
+Construction laborers,1387000,2.9,8.4,2,41.2,FALSE,TRUE,FALSE,construction worker,FALSE,FALSE,TRUE
+Electricians,692000,1.8,6,2.3,14.8,FALSE,TRUE,FALSE,electrician,FALSE,FALSE,TRUE
+"Painters, construction and maintenance",485000,5.5,5.5,2,42.6,FALSE,TRUE,FALSE,building painter,FALSE,FALSE,TRUE
+"Pipelayers, plumbers, pipefitters, and steamfitters",534000,1.3,6.6,1.5,20.9,FALSE,TRUE,FALSE,plumber,FALSE,FALSE,TRUE
+Roofers,196000,1.5,7,0.5,45.1,FALSE,TRUE,FALSE,roofer,FALSE,FALSE,TRUE
+Construction and building inspectors,118000,7.8,5.5,2.1,7.7,FALSE,TRUE,FALSE,building inspector,FALSE,FALSE,TRUE
+Bakers,199000,53.9,15.6,5.1,28.4,FALSE,TRUE,FALSE,baker,FALSE,FALSE,TRUE
+"Butchers and other meat, poultry, and fish processing workers",311000,23,13.5,7.9,41.6,FALSE,TRUE,FALSE,butcher,FALSE,FALSE,TRUE
+Machinists,397000,3.8,4.5,4.9,11.7,FALSE,TRUE,FALSE,machinist,FALSE,FALSE,TRUE
+"Welding, soldering, and brazing workers",593000,4.8,8.7,2.6,23,FALSE,TRUE,FALSE,welder,FALSE,FALSE,TRUE
+Aircraft pilots and flight engineers,129000,4.1,2.7,2.5,5,FALSE,TRUE,FALSE,pilot,FALSE,FALSE,TRUE
+Flight attendants,88000,77.6,11.8,5.9,10.5,FALSE,TRUE,FALSE,flight attendant,FALSE,FALSE,TRUE
+Bus drivers,558000,45.5,25.3,2.3,12.9,FALSE,TRUE,FALSE,bus driver,FALSE,FALSE,TRUE
+Driver/sales workers and truck drivers,3201000,5.4,14,1.6,19.3,FALSE,TRUE,FALSE,truck driver,FALSE,FALSE,TRUE
+Taxi drivers and chauffeurs,336000,13.2,24.8,13.8,16,FALSE,TRUE,FALSE,taxi driver,FALSE,FALSE,TRUE
+Parking lot attendants,81000,11.6,23.5,5.3,35.5,FALSE,TRUE,FALSE,parking attendant,FALSE,FALSE,TRUE
+Crane and tower operators,62000,4,12.3,0.9,12.2,FALSE,TRUE,FALSE,crane operator,FALSE,FALSE,TRUE
+Refuse and recyclable material collectors,106000,6.6,24.9,1.4,29.4,FALSE,TRUE,FALSE,garbage collector,FALSE,FALSE,TRUE
