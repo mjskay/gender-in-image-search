@@ -323,10 +323,6 @@ mturk template for that task is available at `mturk/label_gender_task.html`.
 
 #### Representativeness of filtered dataset
  
-```Figure 1. Comparison of empirical cumulative distribution functions of gender
-distributions in the full set of BLS occupations and our filtered dataset,
-showing similar distribution.```
-
 A requirement of this study was to obtain a representative dataset of images of
 individuals in different occupations with properly labelled gender. This
 required some filtering to ensure that images had correctly labelled genders,
@@ -403,7 +399,7 @@ for (colname in c("p_women", "p_asian", "p_black", "p_hispanic")) {
 ##           is the same as the distribution of p_women for occupations in filtered dataset
 ## D_45,535 = 0.0996997
 ## 
-## Bootstrap p-value:     0.757 
+## Bootstrap p-value:     0.754 
 ## Naive p-value:         0.82557 
 ## Full Sample Statistic: 0.0997
 ```
@@ -416,7 +412,7 @@ for (colname in c("p_women", "p_asian", "p_black", "p_hispanic")) {
 ##           is the same as the distribution of p_asian for occupations in filtered dataset
 ## D_45,535 = 0.09009009
 ## 
-## Bootstrap p-value:     0.815 
+## Bootstrap p-value:     0.819 
 ## Naive p-value:         0.90448 
 ## Full Sample Statistic: 0.09009
 ```
@@ -429,7 +425,7 @@ for (colname in c("p_women", "p_asian", "p_black", "p_hispanic")) {
 ##           is the same as the distribution of p_black for occupations in filtered dataset
 ## D_45,535 = 0.1021021
 ## 
-## Bootstrap p-value:     0.735 
+## Bootstrap p-value:     0.707 
 ## Naive p-value:         0.80298 
 ## Full Sample Statistic: 0.1021
 ```
@@ -442,7 +438,7 @@ for (colname in c("p_women", "p_asian", "p_black", "p_hispanic")) {
 ##           is the same as the distribution of p_hispanic for occupations in filtered dataset
 ## D_45,535 = 0.1423423
 ## 
-## Bootstrap p-value:     0.348 
+## Bootstrap p-value:     0.334 
 ## Naive p-value:         0.39797 
 ## Full Sample Statistic: 0.14234
 ```
