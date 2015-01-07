@@ -3,7 +3,6 @@
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img
 alt="This work is licensed under a Creative Commons Attribution 4.0 International License" 
 title="This work is licensed under a Creative Commons Attribution 4.0 International License" 
-style="border-width:0; float:right;"
 src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a> _Matthew Kay ([mjskay@uw.edu]
 (mailto:mjskay@uw.edu)), Cynthia Matuszek ([cmat@umbc.edu]
 (mailto:cmat@umbc.edu)), and Sean Munson ([smunson@uw.edu]
@@ -399,7 +398,7 @@ for (colname in c("p_women", "p_asian", "p_black", "p_hispanic")) {
 ##           is the same as the distribution of p_women for occupations in filtered dataset
 ## D_45,535 = 0.0996997
 ## 
-## Bootstrap p-value:     0.754 
+## Bootstrap p-value:     0.75 
 ## Naive p-value:         0.82557 
 ## Full Sample Statistic: 0.0997
 ```
@@ -412,7 +411,7 @@ for (colname in c("p_women", "p_asian", "p_black", "p_hispanic")) {
 ##           is the same as the distribution of p_asian for occupations in filtered dataset
 ## D_45,535 = 0.09009009
 ## 
-## Bootstrap p-value:     0.819 
+## Bootstrap p-value:     0.846 
 ## Naive p-value:         0.90448 
 ## Full Sample Statistic: 0.09009
 ```
@@ -425,7 +424,7 @@ for (colname in c("p_women", "p_asian", "p_black", "p_hispanic")) {
 ##           is the same as the distribution of p_black for occupations in filtered dataset
 ## D_45,535 = 0.1021021
 ## 
-## Bootstrap p-value:     0.707 
+## Bootstrap p-value:     0.734 
 ## Naive p-value:         0.80298 
 ## Full Sample Statistic: 0.1021
 ```
@@ -438,7 +437,7 @@ for (colname in c("p_women", "p_asian", "p_black", "p_hispanic")) {
 ##           is the same as the distribution of p_hispanic for occupations in filtered dataset
 ## D_45,535 = 0.1423423
 ## 
-## Bootstrap p-value:     0.334 
+## Bootstrap p-value:     0.33 
 ## Naive p-value:         0.39797 
 ## Full Sample Statistic: 0.14234
 ```
@@ -509,47 +508,20 @@ exhibiting an s-curve:
 
 
 ```r
+library(boot) # for logit, inv.logit (could use qlogis/plogis but this is clearer) 
+
 m.nonstereotyped = glm(search_p_women ~ logit(bls_p_women),
     family=quasibinomial, data=proportions, weights=search_n)
-```
 
-```
-## Error in eval(expr, envir, enclos): could not find function "logit"
-```
-
-```r
 #plot fit and points
 visreg(m.nonstereotyped, scale="response", rug=FALSE)
-```
-
-```
-## Error in family(fit): object 'm.nonstereotyped' not found
-```
-
-```r
 points(search_p_women ~ bls_p_women, data=proportions, pch=20)
-```
-
-```
-## Error in plot.xy(xy.coords(x, y), type = type, ...): plot.new has not been called yet
-```
-
-```r
 #add some reference lines
 abline(coef=c(0,1), lty="dashed")
-```
-
-```
-## Error in int_abline(a = a, b = b, h = h, v = v, untf = untf, ...): plot.new has not been called yet
-```
-
-```r
 abline(v=.5, lty="dashed")
 ```
 
-```
-## Error in int_abline(a = a, b = b, h = h, v = v, untf = untf, ...): plot.new has not been called yet
-```
+![plot of chunk nonstereotyped_model](figure/nonstereotyped_model-1.png) 
 
 While both models can account for a systematic over-representation of one
 gender across careers, only the stereotyped model can account for the pulling at
@@ -570,9 +542,7 @@ plot(m.stereotyped, which=1)
 plot(m.nonstereotyped, which=1)
 ```
 
-```
-## Error in plot(m.nonstereotyped, which = 1): object 'm.nonstereotyped' not found
-```
+![plot of chunk nonstereotyped_model_plot](figure/nonstereotyped_model_plot-2.png) 
 
 We can also compare the models using Vuong’s closeness test for model
 fit:
@@ -588,28 +558,20 @@ library(pscl)
 images = read.csv("data/public/gender_labelled_images.csv")
 m.stereotyped.2 = glm(image_gender ~ I(bls_p_women - 0.5), family=binomial, data=images)
 m.nonstereotyped.2 = glm(image_gender ~ logit(bls_p_women), family=binomial, data=images)
-```
 
-```
-## Error in eval(expr, envir, enclos): could not find function "logit"
-```
-
-```r
 #stop if the coefficients of these models aren't the same as the models fit above
 stopifnot(all.equal(coef(m.stereotyped), coef(m.stereotyped.2))) 
 stopifnot(all.equal(coef(m.nonstereotyped), coef(m.nonstereotyped.2))) 
-```
 
-```
-## Error in coef(m.nonstereotyped): object 'm.nonstereotyped' not found
-```
-
-```r
 vuong(m.stereotyped.2, m.nonstereotyped.2)
 ```
 
 ```
-## Error in vuong(m.stereotyped.2, m.nonstereotyped.2): object 'm.nonstereotyped.2' not found
+## Vuong Non-Nested Hypothesis Test-Statistic: 1.545984 
+## (test-statistic is asymptotically distributed N(0,1) under the
+##  null that the models are indistinguishible)
+## in this case:
+## model1 > model2, with p-value 0.061054
 ```
 
 The Vuong test also suggested that the stereotyped model had better fit. This
@@ -701,7 +663,8 @@ print(inv.logit(coef(m.stereotyped)))
 ```
 
 ```
-## Error in print(inv.logit(coef(m.stereotyped))): could not find function "inv.logit"
+##          (Intercept) I(bls_p_women - 0.5) 
+##            0.4352603            0.9951827
 ```
 
 ```r
@@ -709,7 +672,13 @@ print(inv.logit(confint(m.stereotyped)))
 ```
 
 ```
-## Error in print(inv.logit(confint(m.stereotyped))): could not find function "inv.logit"
+## Waiting for profiling to be done...
+```
+
+```
+##                          2.5 %    97.5 %
+## (Intercept)          0.3890761 0.4824959
+## I(bls_p_women - 0.5) 0.9901967 0.9977539
 ```
 
 Indeed, we find that the intercept does have a significant effect in this

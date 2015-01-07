@@ -206,7 +206,6 @@ hr {
 <p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img
 alt="This work is licensed under a Creative Commons Attribution 4.0 International License" 
 title="This work is licensed under a Creative Commons Attribution 4.0 International License" 
-style="border-width:0; float:right;"
 src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a> <em>Matthew Kay (<a href="mailto:mjskay@uw.edu">mjskay@uw.edu</a>), Cynthia Matuszek (<a href="mailto:cmat@umbc.edu">cmat@umbc.edu</a>), and Sean Munson (<a href="mailto:smunson@uw.edu">smunson@uw.edu</a>)</em></p>
 
 <p>This repository contains data and analysis code from: </p>
@@ -592,7 +591,7 @@ for (colname in c(&quot;p_women&quot;, &quot;p_asian&quot;, &quot;p_black&quot;,
 ##           is the same as the distribution of p_women for occupations in filtered dataset
 ## D_45,535 = 0.0996997
 ## 
-## Bootstrap p-value:     0.754 
+## Bootstrap p-value:     0.75 
 ## Naive p-value:         0.82557 
 ## Full Sample Statistic: 0.0997
 </code></pre>
@@ -604,7 +603,7 @@ for (colname in c(&quot;p_women&quot;, &quot;p_asian&quot;, &quot;p_black&quot;,
 ##           is the same as the distribution of p_asian for occupations in filtered dataset
 ## D_45,535 = 0.09009009
 ## 
-## Bootstrap p-value:     0.819 
+## Bootstrap p-value:     0.846 
 ## Naive p-value:         0.90448 
 ## Full Sample Statistic: 0.09009
 </code></pre>
@@ -616,7 +615,7 @@ for (colname in c(&quot;p_women&quot;, &quot;p_asian&quot;, &quot;p_black&quot;,
 ##           is the same as the distribution of p_black for occupations in filtered dataset
 ## D_45,535 = 0.1021021
 ## 
-## Bootstrap p-value:     0.707 
+## Bootstrap p-value:     0.734 
 ## Naive p-value:         0.80298 
 ## Full Sample Statistic: 0.1021
 </code></pre>
@@ -628,7 +627,7 @@ for (colname in c(&quot;p_women&quot;, &quot;p_asian&quot;, &quot;p_black&quot;,
 ##           is the same as the distribution of p_hispanic for occupations in filtered dataset
 ## D_45,535 = 0.1423423
 ## 
-## Bootstrap p-value:     0.334 
+## Bootstrap p-value:     0.33 
 ## Naive p-value:         0.39797 
 ## Full Sample Statistic: 0.14234
 </code></pre>
@@ -693,38 +692,20 @@ abline(v=.5, lty=&quot;dashed&quot;)
 search results on the logit of the proportion of women in BLS, thus not
 exhibiting an s-curve:</p>
 
-<pre><code class="r">m.nonstereotyped = glm(search_p_women ~ logit(bls_p_women),
+<pre><code class="r">library(boot) # for logit, inv.logit (could use qlogis/plogis but this is clearer) 
+
+m.nonstereotyped = glm(search_p_women ~ logit(bls_p_women),
     family=quasibinomial, data=proportions, weights=search_n)
-</code></pre>
 
-<pre><code>## Error in eval(expr, envir, enclos): could not find function &quot;logit&quot;
-</code></pre>
-
-<pre><code class="r">#plot fit and points
+#plot fit and points
 visreg(m.nonstereotyped, scale=&quot;response&quot;, rug=FALSE)
-</code></pre>
-
-<pre><code>## Error in family(fit): object &#39;m.nonstereotyped&#39; not found
-</code></pre>
-
-<pre><code class="r">points(search_p_women ~ bls_p_women, data=proportions, pch=20)
-</code></pre>
-
-<pre><code>## Error in plot.xy(xy.coords(x, y), type = type, ...): plot.new has not been called yet
-</code></pre>
-
-<pre><code class="r">#add some reference lines
+points(search_p_women ~ bls_p_women, data=proportions, pch=20)
+#add some reference lines
 abline(coef=c(0,1), lty=&quot;dashed&quot;)
+abline(v=.5, lty=&quot;dashed&quot;)
 </code></pre>
 
-<pre><code>## Error in int_abline(a = a, b = b, h = h, v = v, untf = untf, ...): plot.new has not been called yet
-</code></pre>
-
-<pre><code class="r">abline(v=.5, lty=&quot;dashed&quot;)
-</code></pre>
-
-<pre><code>## Error in int_abline(a = a, b = b, h = h, v = v, untf = untf, ...): plot.new has not been called yet
-</code></pre>
+<p><img src="data:image/png;base64,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" alt="plot of chunk nonstereotyped_model"/> </p>
 
 <p>While both models can account for a systematic over-representation of one
 gender across careers, only the stereotyped model can account for the pulling at
@@ -742,8 +723,7 @@ residual fits:</p>
 <pre><code class="r">plot(m.nonstereotyped, which=1)
 </code></pre>
 
-<pre><code>## Error in plot(m.nonstereotyped, which = 1): object &#39;m.nonstereotyped&#39; not found
-</code></pre>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfgAAAH4CAMAAACR9g9NAAAAtFBMVEX9/v0AAAAAADkAAGUAOTkAOWUAOY8AZo8AZrU5AAA5ADk5AGU5OWU5OY85ZrU5j485j9plAABlADllAGVlOQBlOTllOY9lZgBlZjllZmVlj49lj9pltf2POQCPOTmPOWWPZgCPjzmPj2WPtY+P27WP29qP2/21ZgC1Zjm1tf2124+1/rW1/tq1/v2+vr7ajznaj2Xa24/a/rXa/tra/v39tWX924/929r9/rX9/tr9/v3/AAA6PNcOAAAAPHRSTlP/////////////////////////////////////////////////////////////////////////////AP8FrvlYAAAACXBIWXMAAAsSAAALEgHS3X78AAARO0lEQVR4nO2dC3ujuBWGl2TXtWc23Xgyvdtpu7O1pzvN0tm1XUP+//+qJMDggG0kBLp83/tkJrENAvNydITE5ZucQPKN6xUgbqB4UCgeFIoHheJBoXhQKB4UigeF4kGheFAoHhSKB4XiQaF4UCgeFIoHheJBoXhQKB4UigeF4kGheFAoHhSKB4XiQaF4UCgeFIoHheJBoXhQKB4UigeF4kGheFAoHhSKB4XiQaF4UCgeFIoHheJBoXhQKB6UOMUfFong/uXt2+/VO9l61fn+laIexSTFT+OjVjkhEal4JSid7To/1RN/+ozi/acQJP8/LlXg71X8l29893El/1L/RDyv1F/7soY4POzy7HlTvazEH95/WRa1SFliUY7LLzmMmMXLiN8+5uk8Pz69yF/ybfHGPqnEHz9sykAup8ildCH/1+plLb6q6osSy3JcfslhRCpeJWbhXZoVTuWvXNmTgkUVXUW8QLxT7gIFqRD7WL9URc1r8VWJRTkuvpwdIhUv6+67jaqQk0T8IfTdbU5ZeluL38rau6z074q94+G3503j5ZuIL0ssy3H5JYcRr/g8FalYBmbJfrZrRfxxuWq02faqMZg9f3rY1S9b4p+qeoIR7x/KVrYuU/FsJx0W4svcLCvstAz1dzJ8yynkzGmi5rkgviyROd5Lylb94lHW9bLK3p5a9dlatcbTJPlBNuCSqo2/PR33iz0hr1/W4rP1/X/WqlUvSyzLCZY4xZObUDwoFA8KxYNC8aBQPChDxCfEZ0YU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" alt="plot of chunk nonstereotyped_model_plot"/> </p>
 
 <p>We can also compare the models using Vuong’s closeness test for model
 fit:</p>
@@ -757,23 +737,19 @@ fit:</p>
 images = read.csv(&quot;data/public/gender_labelled_images.csv&quot;)
 m.stereotyped.2 = glm(image_gender ~ I(bls_p_women - 0.5), family=binomial, data=images)
 m.nonstereotyped.2 = glm(image_gender ~ logit(bls_p_women), family=binomial, data=images)
-</code></pre>
 
-<pre><code>## Error in eval(expr, envir, enclos): could not find function &quot;logit&quot;
-</code></pre>
-
-<pre><code class="r">#stop if the coefficients of these models aren&#39;t the same as the models fit above
+#stop if the coefficients of these models aren&#39;t the same as the models fit above
 stopifnot(all.equal(coef(m.stereotyped), coef(m.stereotyped.2))) 
 stopifnot(all.equal(coef(m.nonstereotyped), coef(m.nonstereotyped.2))) 
+
+vuong(m.stereotyped.2, m.nonstereotyped.2)
 </code></pre>
 
-<pre><code>## Error in coef(m.nonstereotyped): object &#39;m.nonstereotyped&#39; not found
-</code></pre>
-
-<pre><code class="r">vuong(m.stereotyped.2, m.nonstereotyped.2)
-</code></pre>
-
-<pre><code>## Error in vuong(m.stereotyped.2, m.nonstereotyped.2): object &#39;m.nonstereotyped.2&#39; not found
+<pre><code>## Vuong Non-Nested Hypothesis Test-Statistic: 1.545984 
+## (test-statistic is asymptotically distributed N(0,1) under the
+##  null that the models are indistinguishible)
+## in this case:
+## model1 &gt; model2, with p-value 0.061054
 </code></pre>
 
 <p>The Vuong test also suggested that the stereotyped model had better fit. This
@@ -852,13 +828,19 @@ print(exp(coef(m.stereotyped)))
 print(inv.logit(coef(m.stereotyped)))
 </code></pre>
 
-<pre><code>## Error in print(inv.logit(coef(m.stereotyped))): could not find function &quot;inv.logit&quot;
+<pre><code>##          (Intercept) I(bls_p_women - 0.5) 
+##            0.4352603            0.9951827
 </code></pre>
 
 <pre><code class="r">print(inv.logit(confint(m.stereotyped)))
 </code></pre>
 
-<pre><code>## Error in print(inv.logit(confint(m.stereotyped))): could not find function &quot;inv.logit&quot;
+<pre><code>## Waiting for profiling to be done...
+</code></pre>
+
+<pre><code>##                          2.5 %    97.5 %
+## (Intercept)          0.3890761 0.4824959
+## I(bls_p_women - 0.5) 0.9901967 0.9977539
 </code></pre>
 
 <p>Indeed, we find that the intercept does have a significant effect in this
