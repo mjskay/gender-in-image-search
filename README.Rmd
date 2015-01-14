@@ -11,7 +11,8 @@ src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a> _Matthew Kay ([mjs
 This repository contains data and analysis code from: 
 
 Kay, Matthew, Matuszek, Cynthia, and Munson, Sean. Unequal Representation and
-Gender Stereotypes in Image Search Results for Occupations. _CHI 2015_
+Gender Stereotypes in Image Search Results for Occupations. _CHI 2015:
+Proceedings of the SIGCHI Conference on Human Factors in Computing Systems_
 (upcoming). http://dx.doi.org/10.1145/2702123.2702520
 
 This file is structured as an extended version of the above paper, with inline
