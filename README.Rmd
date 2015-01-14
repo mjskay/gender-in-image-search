@@ -27,6 +27,21 @@ Please email us!
 
 Please cite the CHI paper above.
 
+## Libraries needed for the analyses in this paper
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(cache=TRUE)
+```
+
+```{r libraries}
+library(Matching)   #ks.boot
+library(visreg)
+library(boot)       #logit, inv.logit (could use qlogis/plogis but this is clearer) 
+library(pscl)       #vuong
+library(plyr)       #**ply
+library(ordinal)    #clmm
+```
+
 # Unequal representation and gender stereotypes in image search results for occupations
 
 ## Abstract
@@ -364,7 +379,6 @@ the filtered 45 occupations to the entire set of 535 occupations in the BLS
 non-continuous distributions and ties):
 
 ```{r ks_tests}
-library(Matching)
 occupations = read.csv("data/public/bls_occupations.csv")
 filtered_occupations = read.csv("data/public/filtered_bls_occupations.csv")
 
@@ -437,7 +451,6 @@ indicative of stereotyping: extreme gender proportions in the BLS are pulled
 even more to the extremes in the search results:
 
 ```{r stereotyped_model_plot}
-library(visreg)
 #plot fit and points
 visreg(m.stereotyped, scale="response", rug=FALSE)
 points(search_p_women ~ bls_p_women, data=proportions, pch=20)
@@ -451,8 +464,6 @@ search results on the logit of the proportion of women in BLS, thus not
 exhibiting an s-curve:
 
 ```{r nonstereotyped_model}
-library(boot) # for logit, inv.logit (could use qlogis/plogis but this is clearer) 
-
 m.nonstereotyped = glm(search_p_women ~ logit(bls_p_women),
     family=quasibinomial, data=proportions, weights=search_n)
 
@@ -481,8 +492,6 @@ We can also compare the models using Vuong’s closeness test for model
 fit:
 
 ```{r stereotyped_model_comparison}
-library(pscl)
-
 #N.B. we refit binomial models instead of quasibinomial because
 #Vuong's test requires MLE-based models. We also use the
 #direct (case-by-case) data rather than a data table of 
@@ -514,15 +523,15 @@ examine the intercept of the fitted model:
 ```{r stereotyped_model_coef}
 #regression model coefficients and confidence intervals
 summary(m.stereotyped)
-print(confint(m.stereotyped))
+confint(m.stereotyped)
 
 #coefficients as odds ratios
-print(exp(coef(m.stereotyped)))
-print(exp(confint(m.stereotyped)))
+exp(coef(m.stereotyped))
+exp(confint(m.stereotyped))
 
 #coefficients as percentages at 50% women
-print(inv.logit(coef(m.stereotyped)))
-print(inv.logit(confint(m.stereotyped)))
+inv.logit(coef(m.stereotyped))
+inv.logit(confint(m.stereotyped))
 ```
 
 Indeed, we find that the intercept does have a significant effect in this
@@ -549,8 +558,8 @@ in the BLS.
 Search results can be biased even when their gender proportions are
 representative. For example, in reviewing the images collected for Study 1, we
 identified many examples of sexualized depictions of women who were almost
-certainly not engaged in the profession they portrayed; we dub this the sexy
-construction worker problem, as images of female construction workers in our
+certainly not engaged in the profession they portrayed; we dub this the __sexy
+construction worker problem__, as images of female construction workers in our
 results tended to be sexualized caricatures of construction workers. We wished
 to assess whether images that better match the stereotypical gender of a
 profession were systematically portrayed as more or less professional,
@@ -588,7 +597,24 @@ image gender, and their interaction as fixed effects; we included the turker and
 the image as random effects.<sup><a name="footnote4_source"
 href="#footnote4">4</a></sup> This allows our models to account for (for
 example) situations where women systematically rate men as more attractive than
-men do. We used the coefficients of the image effect in each model as a
+men do. 
+
+```{r adjective_rating_models}
+adjective_ratings = read.csv("data/public/image_adjective_ratings.csv")
+
+#make adjectives ordered factors
+adjectives = colnames(adjective_ratings)[9:16]
+adjective_ratings[,adjectives] = llply(adjective_ratings[,adjectives], function (adjective) 
+    ordered(adjective, levels=c("strongly disagree", "disagree", "neutral", "agree", "strongly agree")))
+
+#build a list mapping each adjective name onto its ordinal model
+m.adjectives = llply(adjectives, function(adjective)
+    clmm(adjective_ratings[[adjective]] ~ turker_gender * image_gender + (1|turker) + (1|image_url), 
+        data=adjective_ratings))
+names(m.adjectives) = adjectives
+```
+
+We used the coefficients of the image effect in each model as a
 normalized rating for that adjective. These ratings have the effects of turker,
 turker gender, image gender, and their interaction factored out and are all
 approximately standard normally distributed.
