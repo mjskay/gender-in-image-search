@@ -211,7 +211,8 @@ src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a> <em>Matthew Kay (<
 <p>This repository contains data and analysis code from: </p>
 
 <p>Kay, Matthew, Matuszek, Cynthia, and Munson, Sean. Unequal Representation and
-Gender Stereotypes in Image Search Results for Occupations. <em>CHI 2015</em>
+Gender Stereotypes in Image Search Results for Occupations. <em>CHI 2015:
+Proceedings of the SIGCHI Conference on Human Factors in Computing Systems</em>
 (upcoming). <a href="http://dx.doi.org/10.1145/2702123.2702520">http://dx.doi.org/10.1145/2702123.2702520</a></p>
 
 <p>This file is structured as an extended version of the above paper, with inline
@@ -224,6 +225,16 @@ Please email us!</p>
 <h2>Citing this work</h2>
 
 <p>Please cite the CHI paper above.</p>
+
+<h2>Libraries needed for the analyses in this paper</h2>
+
+<pre><code class="r">library(Matching)   #ks.boot
+library(visreg)
+library(boot)       #logit, inv.logit (could use qlogis/plogis but this is clearer) 
+library(pscl)       #vuong
+library(plyr)       #**ply
+library(ordinal)    #clmm
+</code></pre>
 
 <h1>Unequal representation and gender stereotypes in image search results for occupations</h1>
 
@@ -558,8 +569,7 @@ the filtered 45 occupations to the entire set of 535 occupations in the BLS
 (using bootstrap p values; unlike the traditional KS test this allows for
 non-continuous distributions and ties):</p>
 
-<pre><code class="r">library(Matching)
-occupations = read.csv(&quot;data/public/bls_occupations.csv&quot;)
+<pre><code class="r">occupations = read.csv(&quot;data/public/bls_occupations.csv&quot;)
 filtered_occupations = read.csv(&quot;data/public/filtered_bls_occupations.csv&quot;)
 
 for (colname in c(&quot;p_women&quot;, &quot;p_asian&quot;, &quot;p_black&quot;, &quot;p_hispanic&quot;)) {
@@ -591,7 +601,7 @@ for (colname in c(&quot;p_women&quot;, &quot;p_asian&quot;, &quot;p_black&quot;,
 ##           is the same as the distribution of p_women for occupations in filtered dataset
 ## D_45,535 = 0.0996997
 ## 
-## Bootstrap p-value:     0.77 
+## Bootstrap p-value:     0.769 
 ## Naive p-value:         0.82557 
 ## Full Sample Statistic: 0.0997
 </code></pre>
@@ -603,7 +613,7 @@ for (colname in c(&quot;p_women&quot;, &quot;p_asian&quot;, &quot;p_black&quot;,
 ##           is the same as the distribution of p_asian for occupations in filtered dataset
 ## D_45,535 = 0.09009009
 ## 
-## Bootstrap p-value:     0.83 
+## Bootstrap p-value:     0.837 
 ## Naive p-value:         0.90448 
 ## Full Sample Statistic: 0.09009
 </code></pre>
@@ -615,7 +625,7 @@ for (colname in c(&quot;p_women&quot;, &quot;p_asian&quot;, &quot;p_black&quot;,
 ##           is the same as the distribution of p_black for occupations in filtered dataset
 ## D_45,535 = 0.1021021
 ## 
-## Bootstrap p-value:     0.713 
+## Bootstrap p-value:     0.731 
 ## Naive p-value:         0.80298 
 ## Full Sample Statistic: 0.1021
 </code></pre>
@@ -627,7 +637,7 @@ for (colname in c(&quot;p_women&quot;, &quot;p_asian&quot;, &quot;p_black&quot;,
 ##           is the same as the distribution of p_hispanic for occupations in filtered dataset
 ## D_45,535 = 0.1423423
 ## 
-## Bootstrap p-value:     0.364 
+## Bootstrap p-value:     0.34 
 ## Naive p-value:         0.39797 
 ## Full Sample Statistic: 0.14234
 </code></pre>
@@ -677,8 +687,7 @@ m.stereotyped = glm(search_p_women ~ I(bls_p_women - 0.5),
 indicative of stereotyping: extreme gender proportions in the BLS are pulled
 even more to the extremes in the search results:</p>
 
-<pre><code class="r">library(visreg)
-#plot fit and points
+<pre><code class="r">#plot fit and points
 visreg(m.stereotyped, scale=&quot;response&quot;, rug=FALSE)
 points(search_p_women ~ bls_p_women, data=proportions, pch=20)
 #add some reference lines
@@ -692,9 +701,7 @@ abline(v=.5, lty=&quot;dashed&quot;)
 search results on the logit of the proportion of women in BLS, thus not
 exhibiting an s-curve:</p>
 
-<pre><code class="r">library(boot) # for logit, inv.logit (could use qlogis/plogis but this is clearer) 
-
-m.nonstereotyped = glm(search_p_women ~ logit(bls_p_women),
+<pre><code class="r">m.nonstereotyped = glm(search_p_women ~ logit(bls_p_women),
     family=quasibinomial, data=proportions, weights=search_n)
 
 #plot fit and points
@@ -728,9 +735,7 @@ residual fits:</p>
 <p>We can also compare the models using Vuong’s closeness test for model
 fit:</p>
 
-<pre><code class="r">library(pscl)
-
-#N.B. we refit binomial models instead of quasibinomial because
+<pre><code class="r">#N.B. we refit binomial models instead of quasibinomial because
 #Vuong&#39;s test requires MLE-based models. We also use the
 #direct (case-by-case) data rather than a data table of 
 #proportions and counts because the vuong function requires it.
@@ -794,7 +799,7 @@ summary(m.stereotyped)
 ## Number of Fisher Scoring iterations: 4
 </code></pre>
 
-<pre><code class="r">print(confint(m.stereotyped))
+<pre><code class="r">confint(m.stereotyped)
 </code></pre>
 
 <pre><code>## Waiting for profiling to be done...
@@ -806,14 +811,14 @@ summary(m.stereotyped)
 </code></pre>
 
 <pre><code class="r">#coefficients as odds ratios
-print(exp(coef(m.stereotyped)))
+exp(coef(m.stereotyped))
 </code></pre>
 
 <pre><code>##          (Intercept) I(bls_p_women - 0.5) 
 ##            0.7707274          206.5835542
 </code></pre>
 
-<pre><code class="r">print(exp(confint(m.stereotyped)))
+<pre><code class="r">exp(confint(m.stereotyped))
 </code></pre>
 
 <pre><code>## Waiting for profiling to be done...
@@ -825,14 +830,14 @@ print(exp(coef(m.stereotyped)))
 </code></pre>
 
 <pre><code class="r">#coefficients as percentages at 50% women
-print(inv.logit(coef(m.stereotyped)))
+inv.logit(coef(m.stereotyped))
 </code></pre>
 
 <pre><code>##          (Intercept) I(bls_p_women - 0.5) 
 ##            0.4352603            0.9951827
 </code></pre>
 
-<pre><code class="r">print(inv.logit(confint(m.stereotyped)))
+<pre><code class="r">inv.logit(confint(m.stereotyped))
 </code></pre>
 
 <pre><code>## Waiting for profiling to be done...
@@ -867,8 +872,8 @@ in the BLS.</p>
 <p>Search results can be biased even when their gender proportions are
 representative. For example, in reviewing the images collected for Study 1, we
 identified many examples of sexualized depictions of women who were almost
-certainly not engaged in the profession they portrayed; we dub this the sexy
-construction worker problem, as images of female construction workers in our
+certainly not engaged in the profession they portrayed; we dub this the <strong>sexy
+construction worker problem</strong>, as images of female construction workers in our
 results tended to be sexualized caricatures of construction workers. We wished
 to assess whether images that better match the stereotypical gender of a
 profession were systematically portrayed as more or less professional,
@@ -906,7 +911,23 @@ image gender, and their interaction as fixed effects; we included the turker and
 the image as random effects.<sup><a name="footnote4_source"
 href="#footnote4">4</a></sup> This allows our models to account for (for
 example) situations where women systematically rate men as more attractive than
-men do. We used the coefficients of the image effect in each model as a
+men do. </p>
+
+<pre><code class="r">adjective_ratings = read.csv(&quot;data/public/image_adjective_ratings.csv&quot;)
+
+#make adjectives ordered factors
+adjectives = colnames(adjective_ratings)[9:16]
+adjective_ratings[,adjectives] = llply(adjective_ratings[,adjectives], function (adjective) 
+    ordered(adjective, levels=c(&quot;strongly disagree&quot;, &quot;disagree&quot;, &quot;neutral&quot;, &quot;agree&quot;, &quot;strongly agree&quot;)))
+
+#build a list mapping each adjective name onto its ordinal model
+m.adjectives = llply(adjectives, function(adjective)
+    clmm(adjective_ratings[[adjective]] ~ turker_gender * image_gender + (1|turker) + (1|image_url), 
+        data=adjective_ratings))
+names(m.adjectives) = adjectives
+</code></pre>
+
+<p>We used the coefficients of the image effect in each model as a
 normalized rating for that adjective. These ratings have the effects of turker,
 turker gender, image gender, and their interaction factored out and are all
 approximately standard normally distributed.</p>
