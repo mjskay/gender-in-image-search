@@ -1,6 +1,7 @@
 *~
 .project
 .settings
+cache
 
 #ignore built readme and supporting files in development branch
 README.md
