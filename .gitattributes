@@ -1,1 +1,3 @@
 *.Rmd text=auto
+*.md text=auto
+*.html text=auto
