@@ -31,6 +31,7 @@ Please cite the CHI paper above.
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(cache=TRUE)
+source("util.R")
 ```
 
 ```{r libraries, message=FALSE, warning=FALSE}
@@ -923,7 +924,7 @@ visreg(m.pre_manipulation, "bls_p_women")
 #In this part we examine only those who returned. 
 manipulated_perceptions_post = read.csv("data/public/manipulated_perceptions_post.csv")
 m.post_manipulation = lmer(perceived_p_women_2 ~ synthetic_p_women + perceived_p_women_1 + 
-    (1|participant), 
+    (perceived_p_women_1|participant), 
     data=manipulated_perceptions_post)
 
 summary(m.post_manipulation)
