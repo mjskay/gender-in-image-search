@@ -1,0 +1,216 @@
+participant,bls_p_women,synthetic_p_women,search_term,perceived_education_level_1,perceived_p_women_1,perceived_growth_1,perceived_prestige_1,perceived_education_level_2,perceived_p_women_2,perceived_growth_2,perceived_prestige_2
+c11,0.078,0.5,building inspector,Two year college or vocational degree,0.14,Staying about the same,Neither prestigious or not,Two year college or vocational degree,0.32,Growing,Neither prestigious or not
+c12,0.377,0.375,cook,High school diploma or equivalent,0.5,Staying about the same,Somewhat unprestigious,High school diploma or equivalent,0.5,Staying about the same,Somewhat unprestigious
+c34,0.126,0.875,police officer,Four year college degree,0.45,Growing,Somewhat prestigious,Four year college degree,0.5,Staying about the same,Somewhat prestigious
+c11,0.596,0.5,optician,Professional degree,0.46,Staying about the same,Somewhat prestigious,Professional degree,0.5,Staying about the same,Somewhat prestigious
+c14,0.442,0.5,chemist,Four year college degree,0.05,Staying about the same,Somewhat unprestigious,Four year college degree,0.54,Growing,Very prestigious
+c30,0.343,0.25,doctor,Doctorate,0.4,Growing,Very prestigious,Doctorate,0.4,Growing,Very prestigious
+c7,0.862,0.75,special ed teacher,Four year college degree,0.75,Growing,Very prestigious,Four year college degree,0.78,Growing,Somewhat prestigious
+c12,0.197,0.125,software developer,Four year college degree,0.2,Staying about the same,Neither prestigious or not,Four year college degree,0.2,Growing,Neither prestigious or not
+c19,0.377,0,cook,High school diploma or equivalent,0.35,Growing,Neither prestigious or not,High school diploma or equivalent,0.25,Staying about the same,Neither prestigious or not
+c17,0.501,0.375,biologist,Professional degree,0.45,Staying about the same,Very prestigious,Four year college degree,0.6,Staying about the same,Somewhat prestigious
+c14,0.029,0,construction worker,Two year college or vocational degree,0.05,Growing,Somewhat prestigious,Four year college degree,0.08,Staying about the same,Very prestigious
+c9,0.862,0.5,special ed teacher,Four year college degree,0.75,Staying about the same,Somewhat prestigious,Four year college degree,0.75,Staying about the same,Somewhat prestigious
+c30,0.814,1,primary school teacher,Four year college degree,0.9,Growing,Neither prestigious or not,Four year college degree,0.85,Growing,Neither prestigious or not
+c12,0.555,0.5,technical writer,Four year college degree,0.4,Staying about the same,Neither prestigious or not,Four year college degree,0.35,Staying about the same,Neither prestigious or not
+c19,0.555,0.5,technical writer,Four year college degree,0.5,Growing,Somewhat prestigious,Four year college degree,0.47,Growing,Neither prestigious or not
+c17,0.861,0.125,nurse practitioner,Four year college degree,0.65,Growing,Somewhat prestigious,Two year college or vocational degree,0.75,Growing,Somewhat prestigious
+c11,0.041,1,pilot,Four year college degree,0.16,Staying about the same,Neither prestigious or not,Four year college degree,0.25,Staying about the same,Somewhat prestigious
+c30,0.556,0.5,author,Four year college degree,0.5,Staying about the same,Somewhat prestigious,Four year college degree,0.6,Staying about the same,Somewhat prestigious
+c14,0.041,1,pilot,Four year college degree,0.2,Staying about the same,Very unprestigious,Four year college degree,0.4,Growing,Very prestigious
+c30,0.126,0.125,police officer,Professional degree,0.25,Growing,Somewhat prestigious,Professional degree,0.3,Growing,Somewhat prestigious
+c16,0.377,0.875,cook,High school diploma or equivalent,0.5,Staying about the same,Somewhat unprestigious,Two year college or vocational degree,0.4,Staying about the same,Somewhat unprestigious
+c19,0.343,0.625,doctor,Doctorate,0.46,Staying about the same,Very prestigious,Four year college degree,0.35,Staying about the same,Very prestigious
+c18,0.678,0.25,customer service representative,High school diploma or equivalent,0.55,Staying about the same,Neither prestigious or not,High school diploma or equivalent,0.6,Growing,Very unprestigious
+c11,0.455,0.5,bus driver,High school diploma or equivalent,0.23,Staying about the same,Somewhat unprestigious,High school diploma or equivalent,0.48,Growing,Somewhat unprestigious
+c30,0.197,0.75,software developer,Four year college degree,0.35,Growing,Somewhat prestigious,Four year college degree,0.35,Growing,Somewhat prestigious
+c12,0.166,0.5,drafter,Four year college degree,0.15,Staying about the same,Neither prestigious or not,Four year college degree,0.05,Staying about the same,Neither prestigious or not
+c16,0.132,0.5,engineer,Professional degree,0.25,Staying about the same,Very prestigious,Four year college degree,0.35,Staying about the same,Very prestigious
+c18,0.728,0,lab tech,Four year college degree,0.5,Growing,Very unprestigious,Four year college degree,0.35,Growing,Somewhat prestigious
+c11,0.225,0.875,computer programmer,Professional degree,0.34,Growing,Very prestigious,Four year college degree,0.5,Growing,Very prestigious
+c7,0.225,0.25,computer programmer,Two year college or vocational degree,0.38,Growing,Somewhat prestigious,Two year college or vocational degree,0.4,Growing,Somewhat prestigious
+c16,0.556,0.25,author,Some high school,0.55,Staying about the same,Somewhat prestigious,Four year college degree,0.5,Growing,Somewhat prestigious
+c19,0.814,0.25,primary school teacher,Four year college degree,0.85,Staying about the same,Neither prestigious or not,Four year college degree,0.75,Staying about the same,Neither prestigious or not
+c34,0.503,0.375,telemarketer,Some high school,0.5,Growing,Somewhat unprestigious,Two year college or vocational degree,0.5,Staying about the same,Somewhat unprestigious
+c43,0.126,0.875,police officer,Four year college degree,0.2,Growing,Somewhat prestigious,Two year college or vocational degree,0.35,Growing,Somewhat prestigious
+c12,0.556,0.5,author,High school diploma or equivalent,0.5,Growing,Somewhat prestigious,Some high school,0.5,Growing,Somewhat prestigious
+c19,0.236,0.75,announcer,Four year college degree,0.2,Staying about the same,Somewhat prestigious,Four year college degree,0.15,Staying about the same,Neither prestigious or not
+c34,0.599,0.5,bartender,High school diploma or equivalent,0.55,Growing,Somewhat prestigious,High school diploma or equivalent,0.5,Growing,Somewhat prestigious
+c18,0.377,0,cook,High school diploma or equivalent,0.45,Growing,Neither prestigious or not,High school diploma or equivalent,0.45,Growing,Somewhat prestigious
+c17,0.225,0.5,computer programmer,Four year college degree,0.25,Growing,Somewhat prestigious,Four year college degree,0.3,Growing,Somewhat prestigious
+c11,0.503,0.375,telemarketer,Two year college or vocational degree,0.18,Staying about the same,Somewhat unprestigious,High school diploma or equivalent,0.5,Growing,Very unprestigious
+c12,0.029,0,construction worker,High school diploma or equivalent,0.02,Staying about the same,Neither prestigious or not,High school diploma or equivalent,0.02,Staying about the same,Neither prestigious or not
+c16,0.555,0.625,technical writer,Four year college degree,0.3,Growing,Somewhat prestigious,Four year college degree,0.2,Growing,Somewhat prestigious
+c19,0.861,0.875,nurse practitioner,Four year college degree,0.85,Staying about the same,Neither prestigious or not,Four year college degree,0.85,Staying about the same,Neither prestigious or not
+c17,0.953,0.5,administrative assistant,High school diploma or equivalent,0.7,Staying about the same,Neither prestigious or not,Two year college or vocational degree,0.75,Staying about the same,Neither prestigious or not
+c11,0.197,0.125,software developer,Professional degree,0.26,Growing,Somewhat unprestigious,Professional degree,0.46,Growing,Very unprestigious
+c30,0.862,0,special ed teacher,Four year college degree,0.75,Growing,Neither prestigious or not,Four year college degree,0.5,Growing,Neither prestigious or not
+c15,0.596,0,optician,Four year college degree,0.5,Staying about the same,Neither prestigious or not,Doctorate,0.4,Staying about the same,Somewhat prestigious
+c12,0.678,0.375,customer service representative,High school diploma or equivalent,0.5,Shrinking,Somewhat unprestigious,High school diploma or equivalent,0.5,Staying about the same,Very unprestigious
+c19,0.274,0.75,chief executive officer,Four year college degree,0.15,Staying about the same,Very prestigious,Four year college degree,0.15,Staying about the same,Very prestigious
+c11,0.441,0.5,insurance sales agent,Four year college degree,0.28,Growing,Neither prestigious or not,Two year college or vocational degree,0.46,Growing,Neither prestigious or not
+c12,0.503,0.5,telemarketer,High school diploma or equivalent,0.5,Staying about the same,Very unprestigious,Some high school,0.5,Staying about the same,Very unprestigious
+c19,0.455,0,bus driver,High school diploma or equivalent,0.06,Staying about the same,Somewhat unprestigious,High school diploma or equivalent,0.08,Staying about the same,Somewhat unprestigious
+c25,0.596,0.375,optician,Professional degree,0.4,Staying about the same,Somewhat prestigious,High school diploma or equivalent,0.4,Staying about the same,Somewhat prestigious
+c18,0.297,0.25,custodian,High school diploma or equivalent,0.4,Staying about the same,Very unprestigious,High school diploma or equivalent,0.45,Shrinking,Very unprestigious
+c35,0.555,0.5,technical writer,Two year college or vocational degree,0.2,Growing,Somewhat prestigious,Four year college degree,0.33,Growing,Somewhat prestigious
+c30,0.678,0.75,customer service representative,High school diploma or equivalent,0.6,Staying about the same,Somewhat unprestigious,High school diploma or equivalent,0.65,Staying about the same,Very unprestigious
+c7,0.041,0.5,pilot,Four year college degree,0.05,Staying about the same,Very prestigious,Four year college degree,0.15,Growing,Somewhat prestigious
+c12,0.225,0.75,computer programmer,Four year college degree,0.15,Growing,Neither prestigious or not,Four year college degree,0.2,Growing,Neither prestigious or not
+c16,0.297,0,custodian,Some high school,0.05,Staying about the same,Very unprestigious,Some high school,0.1,Staying about the same,Very unprestigious
+c38,0.236,1,announcer,Four year college degree,0.05,Staying about the same,Neither prestigious or not,Four year college degree,0.45,Staying about the same,Somewhat prestigious
+c19,0.881,0.5,housekeeper,Some high school,0.98,Staying about the same,Very unprestigious,Some high school,0.95,Staying about the same,Very unprestigious
+c11,0.054,0.5,truck driver,High school diploma or equivalent,0.07,Staying about the same,Somewhat unprestigious,Some high school,0.11,Staying about the same,Somewhat unprestigious
+c30,0.455,0.5,bus driver,High school diploma or equivalent,0.35,Staying about the same,Very unprestigious,High school diploma or equivalent,0.35,Staying about the same,Very unprestigious
+c16,0.078,0.5,building inspector,Two year college or vocational degree,0.1,Staying about the same,Somewhat unprestigious,Two year college or vocational degree,0.15,Staying about the same,Neither prestigious or not
+c19,0.297,0.25,custodian,Some high school,0.23,Staying about the same,Very unprestigious,Some high school,0.18,Staying about the same,Very unprestigious
+c34,0.537,0.375,pharmacist,Four year college degree,0.5,Growing,Somewhat prestigious,Four year college degree,0.45,Staying about the same,Somewhat prestigious
+c11,0.555,1,technical writer,Four year college degree,0.31,Growing,Somewhat prestigious,Four year college degree,0.48,Staying about the same,Somewhat prestigious
+c42,0.941,0,childcare worker,High school diploma or equivalent,0.95,Growing,Somewhat unprestigious,High school diploma or equivalent,0.7,Growing,Neither prestigious or not
+c12,0.132,1,engineer,Four year college degree,0.05,Staying about the same,Somewhat prestigious,Four year college degree,0.07,Staying about the same,Somewhat prestigious
+c1,0.274,0.875,chief executive officer,Professional degree,0.15,Staying about the same,Very prestigious,Professional degree,0.05,Staying about the same,Very prestigious
+c18,0.215,0.5,chef,Two year college or vocational degree,0.25,Growing,Very prestigious,Two year college or vocational degree,0.45,Growing,Very prestigious
+c12,0.862,0.75,special ed teacher,Professional degree,0.75,Growing,Somewhat prestigious,Professional degree,0.65,Growing,Somewhat prestigious
+c19,0.678,1,customer service representative,High school diploma or equivalent,0.65,Growing,Somewhat unprestigious,High school diploma or equivalent,0.78,Staying about the same,Neither prestigious or not
+c8,0.501,0.625,biologist,Doctorate,0.25,Staying about the same,Somewhat prestigious,Doctorate,0.3,Staying about the same,Somewhat prestigious
+c18,0.377,0,mail carrier,High school diploma or equivalent,0.45,Staying about the same,Very unprestigious,High school diploma or equivalent,0.3,Shrinking,Very unprestigious
+c30,0.225,0.125,computer programmer,Four year college degree,0.35,Growing,Somewhat prestigious,Four year college degree,0.35,Growing,Somewhat prestigious
+c7,0.215,0.75,chef,Two year college or vocational degree,0.44,Growing,Somewhat prestigious,Two year college or vocational degree,0.5,Staying about the same,Very prestigious
+c16,0.861,0,nurse practitioner,Professional degree,0.65,Growing,Somewhat prestigious,Four year college degree,0.65,Growing,Somewhat prestigious
+c19,0.728,1,lab tech,Four year college degree,0.42,Growing,Neither prestigious or not,Four year college degree,0.49,Staying about the same,Neither prestigious or not
+c18,0.441,1,insurance sales agent,High school diploma or equivalent,0.45,Staying about the same,Very unprestigious,High school diploma or equivalent,0.4,Growing,Very unprestigious
+c11,0.343,0.375,doctor,Doctorate,0.4,Growing,Very prestigious,Doctorate,0.5,Staying about the same,Very prestigious
+c30,0.555,0.375,technical writer,Four year college degree,0.4,Growing,Somewhat prestigious,Two year college or vocational degree,0.4,Growing,Neither prestigious or not
+c12,0.596,0.375,optician,Doctorate,0.1,Staying about the same,Very prestigious,Doctorate,0.25,Staying about the same,Very prestigious
+c19,0.599,0.625,bartender,High school diploma or equivalent,0.6,Staying about the same,Somewhat unprestigious,High school diploma or equivalent,0.35,Staying about the same,Somewhat unprestigious
+c18,0.236,0.25,announcer,Four year college degree,0.25,Staying about the same,Very prestigious,High school diploma or equivalent,0.45,Growing,Somewhat prestigious
+c17,0.556,0.75,author,Four year college degree,0.5,Staying about the same,Very prestigious,Four year college degree,0.45,Staying about the same,Very prestigious
+c11,0.537,0.375,pharmacist,Four year college degree,0.12,Growing,Neither prestigious or not,Two year college or vocational degree,0.47,Growing,Neither prestigious or not
+c22,0.862,0.5,special ed teacher,Two year college or vocational degree,0.6,Staying about the same,Neither prestigious or not,Four year college degree,0.7,Staying about the same,Somewhat prestigious
+c14,0.728,0.5,lab tech,Two year college or vocational degree,0.6,Growing,Somewhat unprestigious,Four year college degree,0.7,Growing,Somewhat prestigious
+c30,0.132,0.125,engineer,Professional degree,0.35,Growing,Very prestigious,Four year college degree,0.25,Staying about the same,Somewhat prestigious
+c43,0.343,0.25,doctor,Doctorate,0.3,Staying about the same,Very prestigious,Doctorate,0.4,Staying about the same,Very prestigious
+c12,0.274,0.75,chief executive officer,Four year college degree,0.02,Staying about the same,Very prestigious,Four year college degree,0.01,Shrinking,Very prestigious
+c19,0.862,0,special ed teacher,Four year college degree,0.8,Staying about the same,Neither prestigious or not,Four year college degree,0.82,Staying about the same,Neither prestigious or not
+c18,0.132,0,engineer,Four year college degree,0.3,Growing,Somewhat prestigious,Four year college degree,0.25,Growing,Very prestigious
+c17,0.862,0.875,special ed teacher,Four year college degree,0.7,Staying about the same,Somewhat prestigious,Four year college degree,0.7,Staying about the same,Neither prestigious or not
+c7,0.596,0.625,optician,Professional degree,0.41,Growing,Very prestigious,Professional degree,0.5,Growing,Very prestigious
+c12,0.377,0.625,mail carrier,High school diploma or equivalent,0.4,Shrinking,Neither prestigious or not,High school diploma or equivalent,0.35,Shrinking,Neither prestigious or not
+c16,0.599,0.75,bartender,Two year college or vocational degree,0.5,Staying about the same,Somewhat unprestigious,High school diploma or equivalent,0.5,Staying about the same,Very unprestigious
+c7,0.881,0.5,housekeeper,High school diploma or equivalent,0.98,Staying about the same,Somewhat prestigious,Some high school,0.97,Growing,Somewhat unprestigious
+c12,0.041,0,pilot,Four year college degree,0.05,Staying about the same,Somewhat prestigious,Professional degree,0.05,Staying about the same,Somewhat prestigious
+c19,0.537,0.5,pharmacist,Four year college degree,0.4,Growing,Neither prestigious or not,Four year college degree,0.35,Staying about the same,Somewhat prestigious
+c30,0.596,1,optician,Professional degree,0.4,Staying about the same,Somewhat prestigious,Professional degree,0.5,Staying about the same,Somewhat prestigious
+c38,0.215,0.75,chef,Two year college or vocational degree,0.35,Staying about the same,Somewhat prestigious,Two year college or vocational degree,0.42,Staying about the same,Somewhat prestigious
+c19,0.501,0.5,biologist,Four year college degree,0.48,Growing,Somewhat prestigious,Four year college degree,0.45,Staying about the same,Somewhat prestigious
+c17,0.23,0.5,butcher,High school diploma or equivalent,0.2,Staying about the same,Neither prestigious or not,High school diploma or equivalent,0.15,Staying about the same,Somewhat unprestigious
+c42,0.537,0.625,pharmacist,Doctorate,0.6,Staying about the same,Very prestigious,Professional degree,0.6,Staying about the same,Very prestigious
+c30,0.078,0.5,building inspector,Four year college degree,0.2,Staying about the same,Somewhat prestigious,Four year college degree,0.25,Staying about the same,Somewhat prestigious
+c7,0.442,0,chemist,Four year college degree,0.33,Growing,Somewhat prestigious,Professional degree,0.26,Growing,Very prestigious
+c30,0.029,0,construction worker,High school diploma or equivalent,0.15,Staying about the same,Somewhat unprestigious,High school diploma or equivalent,0.25,Staying about the same,Somewhat unprestigious
+c12,0.441,0.5,insurance sales agent,High school diploma or equivalent,0.3,Staying about the same,Neither prestigious or not,High school diploma or equivalent,0.3,Growing,Somewhat unprestigious
+c34,0.236,0.5,announcer,Four year college degree,0.2,Staying about the same,Somewhat prestigious,Four year college degree,0.35,Staying about the same,Somewhat prestigious
+c18,0.555,0.5,technical writer,Four year college degree,0.15,Growing,Neither prestigious or not,Four year college degree,0.3,Growing,Neither prestigious or not
+c30,0.941,1,childcare worker,High school diploma or equivalent,0.8,Growing,Very unprestigious,High school diploma or equivalent,0.85,Growing,Very unprestigious
+c12,0.215,0,chef,Two year college or vocational degree,0.4,Staying about the same,Neither prestigious or not,Two year college or vocational degree,0.4,Staying about the same,Neither prestigious or not
+c18,0.442,1,chemist,Professional degree,0.25,Staying about the same,Somewhat prestigious,Professional degree,0.2,Growing,Very prestigious
+c9,0.678,0,customer service representative,Two year college or vocational degree,0.75,Staying about the same,Neither prestigious or not,High school diploma or equivalent,0.5,Staying about the same,Somewhat unprestigious
+c30,0.041,1,pilot,Professional degree,0.35,Staying about the same,Somewhat prestigious,Professional degree,0.4,Staying about the same,Somewhat prestigious
+c19,0.441,0.5,insurance sales agent,Four year college degree,0.25,Staying about the same,Neither prestigious or not,Four year college degree,0.35,Staying about the same,Neither prestigious or not
+c18,0.537,1,pharmacist,Professional degree,0.3,Staying about the same,Somewhat prestigious,Professional degree,0.3,Growing,Very prestigious
+c12,0.455,0.5,bus driver,High school diploma or equivalent,0.35,Staying about the same,Somewhat unprestigious,High school diploma or equivalent,0.3,Growing,Somewhat unprestigious
+c19,0.197,1,software developer,Four year college degree,0.17,Growing,Somewhat prestigious,Four year college degree,0.3,Growing,Neither prestigious or not
+c18,0.881,0.5,housekeeper,Some high school,0.9,Shrinking,Very unprestigious,High school diploma or equivalent,0.9,Growing,Very unprestigious
+c17,0.503,0.5,telemarketer,High school diploma or equivalent,0.6,Staying about the same,Very unprestigious,High school diploma or equivalent,0.6,Growing,Somewhat unprestigious
+c30,0.537,0.375,pharmacist,Professional degree,0.45,Growing,Somewhat prestigious,Four year college degree,0.45,Growing,Somewhat prestigious
+c12,0.126,0.875,police officer,Two year college or vocational degree,0.15,Staying about the same,Somewhat prestigious,Two year college or vocational degree,0.2,Growing,Somewhat prestigious
+c16,0.503,0.5,telemarketer,High school diploma or equivalent,0.5,Staying about the same,Very unprestigious,Some high school,0.5,Staying about the same,Very unprestigious
+c19,0.215,0,chef,High school diploma or equivalent,0.35,Growing,Neither prestigious or not,Two year college or vocational degree,0.27,Staying about the same,Somewhat prestigious
+c12,0.599,0.5,bartender,High school diploma or equivalent,0.4,Shrinking,Somewhat unprestigious,Some high school,0.5,Staying about the same,Somewhat unprestigious
+c19,0.078,0.5,building inspector,Four year college degree,0.03,Staying about the same,Neither prestigious or not,Four year college degree,0.15,Staying about the same,Neither prestigious or not
+c18,0.013,0.5,plumber,High school diploma or equivalent,0.2,Staying about the same,Very unprestigious,High school diploma or equivalent,0.2,Staying about the same,Neither prestigious or not
+c30,0.236,0,announcer,High school diploma or equivalent,0.25,Staying about the same,Somewhat unprestigious,High school diploma or equivalent,0.2,Staying about the same,Neither prestigious or not
+c7,0.441,1,insurance sales agent,Two year college or vocational degree,0.69,Growing,Somewhat prestigious,High school diploma or equivalent,0.76,Growing,Neither prestigious or not
+c12,0.236,0.75,announcer,High school diploma or equivalent,0.05,Shrinking,Somewhat unprestigious,Two year college or vocational degree,0.2,Shrinking,Neither prestigious or not
+c19,0.132,0.5,engineer,Four year college degree,0.3,Growing,Somewhat prestigious,Four year college degree,0.08,Staying about the same,Somewhat prestigious
+c18,0.503,0.375,telemarketer,High school diploma or equivalent,0.8,Growing,Very unprestigious,High school diploma or equivalent,0.75,Growing,Very unprestigious
+c11,0.501,0.5,biologist,Professional degree,0.2,Staying about the same,Very prestigious,Professional degree,0.48,Growing,Very unprestigious
+c42,0.862,0.75,special ed teacher,Four year college degree,0.9,Growing,Neither prestigious or not,Four year college degree,0.85,Growing,Neither prestigious or not
+c30,0.166,0.5,drafter,Four year college degree,0.2,Staying about the same,Neither prestigious or not,Four year college degree,0.3,Staying about the same,Somewhat prestigious
+c7,0.599,0.625,bartender,High school diploma or equivalent,0.77,Staying about the same,Neither prestigious or not,Some high school,0.65,Staying about the same,Neither prestigious or not
+c12,0.013,0.5,plumber,High school diploma or equivalent,0.05,Staying about the same,Neither prestigious or not,High school diploma or equivalent,0.05,Staying about the same,Neither prestigious or not
+c17,0.215,0.25,chef,Two year college or vocational degree,0.4,Growing,Somewhat prestigious,Two year college or vocational degree,0.35,Growing,Somewhat prestigious
+c30,0.501,0.5,biologist,Four year college degree,0.45,Staying about the same,Very prestigious,Four year college degree,0.45,Staying about the same,Very prestigious
+c7,0.013,0.5,plumber,Two year college or vocational degree,0.07,Staying about the same,Somewhat unprestigious,High school diploma or equivalent,0.05,Growing,Somewhat unprestigious
+c18,0.556,0.75,author,High school diploma or equivalent,0.55,Growing,Very prestigious,Two year college or vocational degree,0.55,Growing,Very prestigious
+c17,0.442,0.5,chemist,Professional degree,0.5,Growing,Very prestigious,Professional degree,0.45,Growing,Very prestigious
+c30,0.442,0.5,chemist,Four year college degree,0.4,Growing,Very prestigious,Four year college degree,0.4,Staying about the same,Somewhat prestigious
+c12,0.343,0.625,doctor,Doctorate,0.25,Growing,Very prestigious,Doctorate,0.35,Growing,Very prestigious
+c18,0.225,0.75,computer programmer,Two year college or vocational degree,0.35,Growing,Somewhat prestigious,Two year college or vocational degree,0.35,Growing,Very prestigious
+c14,0.126,1,police officer,Four year college degree,0.75,Growing,Very unprestigious,Two year college or vocational degree,0.4,Growing,Somewhat prestigious
+c16,0.343,0,doctor,Professional degree,0.35,Staying about the same,Very prestigious,Professional degree,0.35,Staying about the same,Very prestigious
+c19,0.503,0.5,telemarketer,High school diploma or equivalent,0.4,Shrinking,Neither prestigious or not,High school diploma or equivalent,0.47,Shrinking,Somewhat unprestigious
+c18,0.862,0.25,special ed teacher,Four year college degree,0.8,Staying about the same,Somewhat prestigious,Four year college degree,0.9,Growing,Somewhat prestigious
+c17,0.377,0,mail carrier,High school diploma or equivalent,0.5,Shrinking,Somewhat unprestigious,High school diploma or equivalent,0.5,Shrinking,Neither prestigious or not
+c11,0.236,0.75,announcer,Two year college or vocational degree,0.37,Staying about the same,Somewhat prestigious,Two year college or vocational degree,0.42,Staying about the same,Somewhat prestigious
+c30,0.215,1,chef,Professional degree,0.4,Staying about the same,Somewhat prestigious,Two year college or vocational degree,0.4,Staying about the same,Somewhat prestigious
+c12,0.814,0,primary school teacher,Four year college degree,0.65,Growing,Somewhat prestigious,Professional degree,0.7,Growing,Somewhat prestigious
+c16,0.862,0.25,special ed teacher,Professional degree,0.7,Growing,Somewhat prestigious,Four year college degree,0.8,Growing,Somewhat prestigious
+c19,0.126,0.5,police officer,High school diploma or equivalent,0.2,Staying about the same,Somewhat prestigious,High school diploma or equivalent,0.2,Staying about the same,Neither prestigious or not
+c34,0.941,1,childcare worker,Four year college degree,0.35,Growing,Somewhat prestigious,Two year college or vocational degree,0.9,Staying about the same,Somewhat prestigious
+c11,0.215,0.5,chef,Two year college or vocational degree,0.25,Staying about the same,Somewhat prestigious,High school diploma or equivalent,0.42,Growing,Somewhat prestigious
+c35,0.441,0.5,insurance sales agent,High school diploma or equivalent,0.35,Growing,Somewhat unprestigious,Four year college degree,0.37,Growing,Somewhat prestigious
+c9,0.013,0.5,plumber,High school diploma or equivalent,0.2,Staying about the same,Neither prestigious or not,Two year college or vocational degree,0.15,Staying about the same,Somewhat unprestigious
+c30,0.377,0.625,mail carrier,Two year college or vocational degree,0.5,Shrinking,Neither prestigious or not,Four year college degree,0.5,Shrinking,Neither prestigious or not
+c12,0.297,0,custodian,High school diploma or equivalent,0.6,Staying about the same,Very unprestigious,High school diploma or equivalent,0.4,Staying about the same,Very unprestigious
+c18,0.274,1,chief executive officer,Four year college degree,0.2,Growing,Very prestigious,Professional degree,0.35,Growing,Very prestigious
+c11,0.377,0.5,cook,Two year college or vocational degree,0.27,Staying about the same,Neither prestigious or not,Two year college or vocational degree,0.16,Staying about the same,Neither prestigious or not
+c38,0.596,1,optician,Doctorate,0.45,Staying about the same,Somewhat prestigious,Professional degree,0.45,Growing,Very prestigious
+c30,0.297,0.25,custodian,High school diploma or equivalent,0.2,Staying about the same,Very unprestigious,High school diploma or equivalent,0.35,Staying about the same,Very unprestigious
+c25,0.503,0.625,telemarketer,High school diploma or equivalent,0.5,Staying about the same,Very unprestigious,High school diploma or equivalent,0.5,Staying about the same,Very unprestigious
+c14,0.862,0.125,special ed teacher,Four year college degree,0.85,Growing,Somewhat prestigious,Professional degree,0.65,Growing,Very prestigious
+c30,0.503,0.625,telemarketer,High school diploma or equivalent,0.5,Growing,Very unprestigious,High school diploma or equivalent,0.5,Staying about the same,Very unprestigious
+c42,0.132,0.125,engineer,Four year college degree,0.5,Staying about the same,Very prestigious,Four year college degree,0.5,Growing,Very prestigious
+c43,0.862,0.75,special ed teacher,Two year college or vocational degree,0.8,Staying about the same,Somewhat unprestigious,Four year college degree,0.8,Staying about the same,Neither prestigious or not
+c7,0.297,0,custodian,High school diploma or equivalent,0.44,Growing,Neither prestigious or not,Some high school,0.1,Staying about the same,Somewhat unprestigious
+c19,0.377,0.75,mail carrier,High school diploma or equivalent,0.37,Shrinking,Neither prestigious or not,High school diploma or equivalent,0.28,Shrinking,Somewhat unprestigious
+c18,0.814,0.75,primary school teacher,Four year college degree,0.9,Staying about the same,Neither prestigious or not,Four year college degree,0.9,Staying about the same,Neither prestigious or not
+c43,0.297,0.75,custodian,Some high school,0.3,Staying about the same,Very unprestigious,Some high school,0.45,Staying about the same,Very unprestigious
+c12,0.537,0.5,pharmacist,Four year college degree,0.3,Growing,Somewhat prestigious,Professional degree,0.4,Growing,Somewhat prestigious
+c19,0.941,0,childcare worker,Four year college degree,0.8,Staying about the same,Neither prestigious or not,Four year college degree,0.7,Staying about the same,Neither prestigious or not
+c18,0.126,1,police officer,High school diploma or equivalent,0.25,Growing,Somewhat prestigious,High school diploma or equivalent,0.35,Growing,Somewhat prestigious
+c30,0.861,0.125,nurse practitioner,Professional degree,0.9,Growing,Somewhat prestigious,Professional degree,0.8,Growing,Somewhat prestigious
+c16,0.197,1,software developer,Four year college degree,0.25,Growing,Very prestigious,Four year college degree,0.3,Growing,Very prestigious
+c19,0.596,0.5,optician,Four year college degree,0.4,Staying about the same,Somewhat prestigious,Four year college degree,0.62,Staying about the same,Neither prestigious or not
+c11,0.442,0.5,chemist,Doctorate,0.34,Staying about the same,Very prestigious,Professional degree,0.45,Growing,Very prestigious
+c30,0.728,0,lab tech,Four year college degree,0.4,Staying about the same,Somewhat prestigious,Four year college degree,0.5,Staying about the same,Somewhat prestigious
+c43,0.166,0.5,drafter,Four year college degree,0.2,Staying about the same,Neither prestigious or not,Two year college or vocational degree,0.25,Staying about the same,Neither prestigious or not
+c12,0.728,0.75,lab tech,Four year college degree,0.25,Staying about the same,Neither prestigious or not,Four year college degree,0.35,Growing,Neither prestigious or not
+c6,0.166,0.5,drafter,Two year college or vocational degree,0.3,Staying about the same,Neither prestigious or not,Two year college or vocational degree,0.5,Staying about the same,Somewhat prestigious
+c19,0.041,0.5,pilot,Four year college degree,0.15,Staying about the same,Somewhat prestigious,Four year college degree,0.1,Staying about the same,Somewhat prestigious
+c34,0.274,0.25,chief executive officer,Professional degree,0.5,Growing,Very prestigious,Professional degree,0.45,Staying about the same,Very prestigious
+c18,0.953,0.5,administrative assistant,High school diploma or equivalent,0.8,Shrinking,Very unprestigious,High school diploma or equivalent,0.8,Staying about the same,Very unprestigious
+c30,0.599,0.75,bartender,High school diploma or equivalent,0.45,Staying about the same,Somewhat unprestigious,High school diploma or equivalent,0.35,Staying about the same,Somewhat unprestigious
+c43,0.814,0.25,primary school teacher,Professional degree,0.65,Staying about the same,Neither prestigious or not,Professional degree,0.65,Staying about the same,Neither prestigious or not
+c7,0.555,0.625,technical writer,Four year college degree,0.35,Growing,Somewhat prestigious,Two year college or vocational degree,0.65,Growing,Somewhat prestigious
+c12,0.442,0.5,chemist,Professional degree,0.15,Staying about the same,Somewhat prestigious,Four year college degree,0.2,Staying about the same,Somewhat prestigious
+c19,0.556,0.25,author,Four year college degree,0.5,Growing,Somewhat prestigious,Four year college degree,0.4,Growing,Somewhat prestigious
+c17,0.197,0.125,software developer,Professional degree,0.4,Growing,Very prestigious,Four year college degree,0.4,Growing,Somewhat prestigious
+c30,0.274,0.125,chief executive officer,Professional degree,0.2,Staying about the same,Very prestigious,Four year college degree,0.2,Staying about the same,Very prestigious
+c43,0.728,0.625,lab tech,Four year college degree,0.4,Growing,Somewhat prestigious,Professional degree,0.4,Growing,Somewhat prestigious
+c12,0.501,0.5,biologist,Four year college degree,0.05,Staying about the same,Somewhat prestigious,Four year college degree,0.05,Staying about the same,Somewhat prestigious
+c16,0.441,1,insurance sales agent,Four year college degree,0.2,Growing,Somewhat prestigious,Four year college degree,0.4,Staying about the same,Neither prestigious or not
+c19,0.029,0,construction worker,Some high school,0.01,Staying about the same,Somewhat unprestigious,High school diploma or equivalent,0.02,Staying about the same,Somewhat unprestigious
+c30,0.013,0.5,plumber,Professional degree,0.2,Staying about the same,Neither prestigious or not,Two year college or vocational degree,0.2,Staying about the same,Neither prestigious or not
+c12,0.861,0.125,nurse practitioner,Professional degree,0.65,Growing,Somewhat prestigious,Professional degree,0.7,Growing,Somewhat prestigious
+c19,0.442,0.5,chemist,Four year college degree,0.35,Growing,Somewhat prestigious,Four year college degree,0.2,Staying about the same,Somewhat prestigious
+c18,0.599,1,bartender,Two year college or vocational degree,0.4,Growing,Neither prestigious or not,Two year college or vocational degree,0.3,Growing,Somewhat prestigious
+c30,0.441,0.5,insurance sales agent,Four year college degree,0.45,Growing,Somewhat prestigious,Four year college degree,0.4,Staying about the same,Neither prestigious or not
+c12,0.941,0.875,childcare worker,High school diploma or equivalent,0.95,Growing,Somewhat unprestigious,High school diploma or equivalent,0.85,Staying about the same,Very unprestigious
+c16,0.442,0.5,chemist,Doctorate,0.3,Growing,Very prestigious,Four year college degree,0.3,Staying about the same,Very prestigious
+c18,0.029,0,construction worker,High school diploma or equivalent,0.2,Growing,Somewhat unprestigious,High school diploma or equivalent,0.2,Growing,Neither prestigious or not
+c14,0.881,0.5,housekeeper,High school diploma or equivalent,0.95,Growing,Neither prestigious or not,Two year college or vocational degree,0.8,Staying about the same,Somewhat prestigious
+c30,0.377,0.375,cook,High school diploma or equivalent,0.35,Staying about the same,Somewhat unprestigious,High school diploma or equivalent,0.4,Staying about the same,Somewhat unprestigious
+c7,0.501,1,biologist,Professional degree,0.38,Growing,Very prestigious,Professional degree,0.45,Growing,Very prestigious
+c16,0.814,0.25,primary school teacher,Four year college degree,0.7,Staying about the same,Neither prestigious or not,Four year college degree,0.8,Staying about the same,Somewhat prestigious
+c19,0.225,0.125,computer programmer,Four year college degree,0.3,Growing,Neither prestigious or not,Four year college degree,0.72,Growing,Neither prestigious or not
