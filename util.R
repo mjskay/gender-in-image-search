@@ -14,7 +14,7 @@ pander.summary.merMod = function(x, ...) {
     #random effects
     cat("```\nRandom effects:\n")
     print(x$varcor)
-    cat("```\n")
+    cat("```\n\n")
     
     #fixed effects
     x.coef = as.data.frame(coef(x))
@@ -33,15 +33,15 @@ pander.summary.clmm = function(x, ...) {
     
     #fixed effects and thresholds
     fixed.coef = threshold.coef = as.data.frame(coef(x))
-    if (!is.null(x.coef$P)) {
+    if (!is.null(fixed.coef$P)) {
         #ignore p values for threshold coefs
         threshold.coef = threshold.coef[,-length(fixed.coef)]
         #add p stars for fixed effect coefs
-        fixed.coef = cbind(fixed.coef, ` `=p.stars(x.coef$P))
+        fixed.coef = cbind(fixed.coef, ` `=p.stars(fixed.coef$P))
     }
     threshold.coef = threshold.coef[names(x$alpha),]
     fixed.coef = fixed.coef[names(x$beta),] 
         
-    pandoc.table(fixed.coef, caption=paste("Fixed effects.", x$methTitle), emphasize.rownames=FALSE, ...)
+    pandoc.table(fixed.coef, caption=paste("Fixed effects"), emphasize.rownames=FALSE, ...)
     pandoc.table(threshold.coef, caption=paste("Threshold coefficients"), emphasize.rownames=FALSE, ...)
 }
