@@ -143,7 +143,7 @@ for (colname in <span class="kw">c</span>(<span class="st">&quot;p_women&quot;</
 ##           is the same as the distribution of p_women for occupations in filtered dataset
 ## D_45,535 = 0.0996997
 ## 
-## Bootstrap p-value:     0.787 
+## Bootstrap p-value:     0.759 
 ## Naive p-value:         0.82557 
 ## Full Sample Statistic: 0.0997</code></pre>
 <div class="figure">
@@ -154,7 +154,7 @@ for (colname in <span class="kw">c</span>(<span class="st">&quot;p_women&quot;</
 ##           is the same as the distribution of p_asian for occupations in filtered dataset
 ## D_45,535 = 0.09009009
 ## 
-## Bootstrap p-value:     0.824 
+## Bootstrap p-value:     0.825 
 ## Naive p-value:         0.90448 
 ## Full Sample Statistic: 0.09009</code></pre>
 <div class="figure">
@@ -165,7 +165,7 @@ for (colname in <span class="kw">c</span>(<span class="st">&quot;p_women&quot;</
 ##           is the same as the distribution of p_black for occupations in filtered dataset
 ## D_45,535 = 0.1021021
 ## 
-## Bootstrap p-value:     0.704 
+## Bootstrap p-value:     0.727 
 ## Naive p-value:         0.80298 
 ## Full Sample Statistic: 0.1021</code></pre>
 <div class="figure">
@@ -176,7 +176,7 @@ for (colname in <span class="kw">c</span>(<span class="st">&quot;p_women&quot;</
 ##           is the same as the distribution of p_hispanic for occupations in filtered dataset
 ## D_45,535 = 0.1423423
 ## 
-## Bootstrap p-value:     0.31 
+## Bootstrap p-value:     0.327 
 ## Naive p-value:         0.39797 
 ## Full Sample Statistic: 0.14234</code></pre>
 <p>We did not find evidence that our filtered dataset significantly differed from the set of occupations in the BLS in terms of gender distribution, distribution of Asian people, distribution of Black or African American people, or distribution of Hispanic or Latino people. Note the close correspondence of empirical cumulative distribution functions for the filtered dataset versus the full BLS dataset.</p>
@@ -254,20 +254,13 @@ m.nonstereotyped<span class="fl">.2</span> =<span class="st"> </span><span class
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co">#regression model coefficients and confidence intervals</span>
 <span class="kw">summary</span>(m.stereotyped)</code></pre>
 <table>
-<colgroup>
-<col width="37%" />
-<col width="15%" />
-<col width="18%" />
-<col width="13%" />
-<col width="13%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th align="center"> </th>
 <th align="center">Estimate</th>
 <th align="center">Std. Error</th>
 <th align="center">t value</th>
-<th align="center">Pr(&gt;|t|)</th>
+<th align="center">Pr(&gt;</th>
 </tr>
 </thead>
 <tbody>
@@ -289,18 +282,14 @@ m.nonstereotyped<span class="fl">.2</span> =<span class="st"> </span><span class
 </table>
 <p>(Dispersion parameter for quasibinomial family taken to be 4.467219 )</p>
 <table>
-<colgroup>
-<col width="26%" />
-<col width="34%" />
-</colgroup>
 <tbody>
 <tr class="odd">
 <td align="center">Null deviance:</td>
-<td align="left">1594.5 on 44 degrees of freedom</td>
+<td align="center">1594.5 on 44 degrees of freedom</td>
 </tr>
 <tr class="even">
 <td align="center">Residual deviance:</td>
-<td align="left">204.1 on 43 degrees of freedom</td>
+<td align="center">204.1 on 43 degrees of freedom</td>
 </tr>
 </tbody>
 </table>
@@ -393,20 +382,13 @@ m.selected_image =<span class="st"> </span><span class="kw">glm</span>(image_sel
 
 <span class="kw">summary</span>(m.selected_image)</code></pre>
 <table>
-<colgroup>
-<col width="60%" />
-<col width="10%" />
-<col width="11%" />
-<col width="9%" />
-<col width="9%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th align="center"> </th>
 <th align="center">Estimate</th>
 <th align="center">Std. Error</th>
 <th align="center">z value</th>
-<th align="center">Pr(&gt;|z|)</th>
+<th align="center">Pr(&gt;</th>
 </tr>
 </thead>
 <tbody>
@@ -526,18 +508,14 @@ m.selected_image =<span class="st"> </span><span class="kw">glm</span>(image_sel
 </table>
 <p>(Dispersion parameter for binomial family taken to be 1 )</p>
 <table>
-<colgroup>
-<col width="26%" />
-<col width="34%" />
-</colgroup>
 <tbody>
 <tr class="odd">
 <td align="center">Null deviance:</td>
-<td align="left">2465 on 3267 degrees of freedom</td>
+<td align="center">2465 on 3267 degrees of freedom</td>
 </tr>
 <tr class="even">
 <td align="center">Residual deviance:</td>
-<td align="left">2336 on 3252 degrees of freedom</td>
+<td align="center">2336 on 3252 degrees of freedom</td>
 </tr>
 </tbody>
 </table>
@@ -580,12 +558,6 @@ m.quality_rating =<span class="st"> </span><span class="kw">clmm</span>(quality_
 <span class="kw">summary</span>(m.quality_rating)</code></pre>
 <table>
 <caption>Random effects</caption>
-<colgroup>
-<col width="16%" />
-<col width="16%" />
-<col width="15%" />
-<col width="15%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th align="center">Groups</th>
@@ -611,22 +583,14 @@ m.quality_rating =<span class="st"> </span><span class="kw">clmm</span>(quality_
 </table>
 <table>
 <caption>Fixed effects</caption>
-<colgroup>
-<col width="53%" />
-<col width="10%" />
-<col width="12%" />
-<col width="9%" />
-<col width="10%" />
-<col width="1%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th align="center"> </th>
 <th align="center">Estimate</th>
 <th align="center">Std. Error</th>
 <th align="center">z value</th>
-<th align="center">Pr(&gt;|z|)</th>
-<th align="left"></th>
+<th align="center">Pr(&gt;</th>
+<th align="center">z</th>
 </tr>
 </thead>
 <tbody>
@@ -636,7 +600,7 @@ m.quality_rating =<span class="st"> </span><span class="kw">clmm</span>(quality_
 <td align="center">0.8965</td>
 <td align="center">-2.409</td>
 <td align="center">0.016</td>
-<td align="left">*</td>
+<td align="center">*</td>
 </tr>
 <tr class="even">
 <td align="center">bls_p_women</td>
@@ -644,7 +608,7 @@ m.quality_rating =<span class="st"> </span><span class="kw">clmm</span>(quality_
 <td align="center">1.344</td>
 <td align="center">-2.316</td>
 <td align="center">0.02058</td>
-<td align="left">*</td>
+<td align="center">*</td>
 </tr>
 <tr class="odd">
 <td align="center">participant_gendermale</td>
@@ -652,7 +616,7 @@ m.quality_rating =<span class="st"> </span><span class="kw">clmm</span>(quality_
 <td align="center">0.8672</td>
 <td align="center">0.2525</td>
 <td align="center">0.8007</td>
-<td align="left"></td>
+<td align="center"></td>
 </tr>
 <tr class="even">
 <td align="center">professional</td>
@@ -660,7 +624,7 @@ m.quality_rating =<span class="st"> </span><span class="kw">clmm</span>(quality_
 <td align="center">0.1864</td>
 <td align="center">-0.7099</td>
 <td align="center">0.4778</td>
-<td align="left"></td>
+<td align="center"></td>
 </tr>
 <tr class="odd">
 <td align="center">attractive</td>
@@ -668,7 +632,7 @@ m.quality_rating =<span class="st"> </span><span class="kw">clmm</span>(quality_
 <td align="center">0.1776</td>
 <td align="center">0.4797</td>
 <td align="center">0.6314</td>
-<td align="left"></td>
+<td align="center"></td>
 </tr>
 <tr class="even">
 <td align="center">inappropriate</td>
@@ -676,7 +640,7 @@ m.quality_rating =<span class="st"> </span><span class="kw">clmm</span>(quality_
 <td align="center">0.2463</td>
 <td align="center">1.539</td>
 <td align="center">0.1237</td>
-<td align="left"></td>
+<td align="center"></td>
 </tr>
 <tr class="odd">
 <td align="center">provocative</td>
@@ -684,7 +648,7 @@ m.quality_rating =<span class="st"> </span><span class="kw">clmm</span>(quality_
 <td align="center">0.3288</td>
 <td align="center">-1.268</td>
 <td align="center">0.2046</td>
-<td align="left"></td>
+<td align="center"></td>
 </tr>
 <tr class="even">
 <td align="center">sexy</td>
@@ -692,7 +656,7 @@ m.quality_rating =<span class="st"> </span><span class="kw">clmm</span>(quality_
 <td align="center">0.2083</td>
 <td align="center">-0.08609</td>
 <td align="center">0.9314</td>
-<td align="left"></td>
+<td align="center"></td>
 </tr>
 <tr class="odd">
 <td align="center">competent</td>
@@ -700,7 +664,7 @@ m.quality_rating =<span class="st"> </span><span class="kw">clmm</span>(quality_
 <td align="center">0.2241</td>
 <td align="center">2.039</td>
 <td align="center">0.0415</td>
-<td align="left">*</td>
+<td align="center">*</td>
 </tr>
 <tr class="even">
 <td align="center">trustworthy</td>
@@ -708,7 +672,7 @@ m.quality_rating =<span class="st"> </span><span class="kw">clmm</span>(quality_
 <td align="center">0.209</td>
 <td align="center">-0.7773</td>
 <td align="center">0.437</td>
-<td align="left"></td>
+<td align="center"></td>
 </tr>
 <tr class="odd">
 <td align="center">weird</td>
@@ -716,7 +680,7 @@ m.quality_rating =<span class="st"> </span><span class="kw">clmm</span>(quality_
 <td align="center">0.2182</td>
 <td align="center">-2.174</td>
 <td align="center">0.02968</td>
-<td align="left">*</td>
+<td align="center">*</td>
 </tr>
 <tr class="even">
 <td align="center">synthetic_p_women:bls_p_women</td>
@@ -724,7 +688,7 @@ m.quality_rating =<span class="st"> </span><span class="kw">clmm</span>(quality_
 <td align="center">1.704</td>
 <td align="center">3.112</td>
 <td align="center">0.001857</td>
-<td align="left">**</td>
+<td align="center">**</td>
 </tr>
 <tr class="odd">
 <td align="center">synthetic_p_women:participant_gendermale</td>
@@ -732,7 +696,7 @@ m.quality_rating =<span class="st"> </span><span class="kw">clmm</span>(quality_
 <td align="center">1.225</td>
 <td align="center">-0.5642</td>
 <td align="center">0.5726</td>
-<td align="left"></td>
+<td align="center"></td>
 </tr>
 <tr class="even">
 <td align="center">bls_p_women:participant_gendermale</td>
@@ -740,7 +704,7 @@ m.quality_rating =<span class="st"> </span><span class="kw">clmm</span>(quality_
 <td align="center">1.358</td>
 <td align="center">-0.3338</td>
 <td align="center">0.7385</td>
-<td align="left"></td>
+<td align="center"></td>
 </tr>
 <tr class="odd">
 <td align="center">synthetic_p_women:bls_p_women:participant_gendermale</td>
@@ -748,18 +712,12 @@ m.quality_rating =<span class="st"> </span><span class="kw">clmm</span>(quality_
 <td align="center">2.323</td>
 <td align="center">0.8045</td>
 <td align="center">0.4211</td>
-<td align="left"></td>
+<td align="center"></td>
 </tr>
 </tbody>
 </table>
 <table>
 <caption>Threshold coefficients</caption>
-<colgroup>
-<col width="23%" />
-<col width="15%" />
-<col width="18%" />
-<col width="12%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th align="center"> </th>
@@ -770,28 +728,28 @@ m.quality_rating =<span class="st"> </span><span class="kw">clmm</span>(quality_
 </thead>
 <tbody>
 <tr class="odd">
-<td align="center">very poor|poor</td>
+<td align="center">very poor</td>
+<td align="center">poor</td>
 <td align="center">-5.131</td>
 <td align="center">0.847</td>
-<td align="center">-6.058</td>
 </tr>
 <tr class="even">
-<td align="center">poor|fair</td>
+<td align="center">poor</td>
+<td align="center">fair</td>
 <td align="center">-3.539</td>
 <td align="center">0.8133</td>
-<td align="center">-4.351</td>
 </tr>
 <tr class="odd">
-<td align="center">fair|good</td>
+<td align="center">fair</td>
+<td align="center">good</td>
 <td align="center">-1.511</td>
 <td align="center">0.7904</td>
-<td align="center">-1.912</td>
 </tr>
 <tr class="even">
-<td align="center">good|very good</td>
+<td align="center">good</td>
+<td align="center">very good</td>
 <td align="center">0.866</td>
 <td align="center">0.7852</td>
-<td align="center">1.103</td>
 </tr>
 </tbody>
 </table>
@@ -840,15 +798,6 @@ m.pre_manipulation =<span class="st"> </span><span class="kw">lmer</span>(percei
  Residual                0.134069</code></pre>
 <table>
 <caption>Fixed effects. Linear mixed model fit by REML t-tests use Satterthwaite approximations to degrees of freedom</caption>
-<colgroup>
-<col width="19%" />
-<col width="15%" />
-<col width="18%" />
-<col width="8%" />
-<col width="13%" />
-<col width="15%" />
-<col width="4%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th align="center"> </th>
@@ -856,8 +805,8 @@ m.pre_manipulation =<span class="st"> </span><span class="kw">lmer</span>(percei
 <th align="center">Std. Error</th>
 <th align="center">df</th>
 <th align="center">t value</th>
-<th align="center">Pr(&gt;|t|)</th>
-<th align="left"></th>
+<th align="center">Pr(&gt;</th>
+<th align="center">t</th>
 </tr>
 </thead>
 <tbody>
@@ -868,7 +817,7 @@ m.pre_manipulation =<span class="st"> </span><span class="kw">lmer</span>(percei
 <td align="center">34.47</td>
 <td align="center">4.505</td>
 <td align="center">7.273e-05</td>
-<td align="left">***</td>
+<td align="center">***</td>
 </tr>
 <tr class="even">
 <td align="center">bls_p_women</td>
@@ -877,7 +826,7 @@ m.pre_manipulation =<span class="st"> </span><span class="kw">lmer</span>(percei
 <td align="center">297.9</td>
 <td align="center">29.5</td>
 <td align="center">0</td>
-<td align="left">***</td>
+<td align="center">***</td>
 </tr>
 </tbody>
 </table>
@@ -905,15 +854,6 @@ m.post_manipulation =<span class="st"> </span><span class="kw">lmer</span>(perce
  Residual                        0.10140        </code></pre>
 <table>
 <caption>Fixed effects. Linear mixed model fit by REML t-tests use Satterthwaite approximations to degrees of freedom</caption>
-<colgroup>
-<col width="28%" />
-<col width="14%" />
-<col width="17%" />
-<col width="7%" />
-<col width="13%" />
-<col width="14%" />
-<col width="3%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th align="center"> </th>
@@ -921,8 +861,8 @@ m.post_manipulation =<span class="st"> </span><span class="kw">lmer</span>(perce
 <th align="center">Std. Error</th>
 <th align="center">df</th>
 <th align="center">t value</th>
-<th align="center">Pr(&gt;|t|)</th>
-<th align="left"></th>
+<th align="center">Pr(&gt;</th>
+<th align="center">t</th>
 </tr>
 </thead>
 <tbody>
@@ -933,7 +873,7 @@ m.post_manipulation =<span class="st"> </span><span class="kw">lmer</span>(perce
 <td align="center">15.71</td>
 <td align="center">2.864</td>
 <td align="center">0.0114</td>
-<td align="left">*</td>
+<td align="center">*</td>
 </tr>
 <tr class="even">
 <td align="center">synthetic_p_women</td>
@@ -942,7 +882,7 @@ m.post_manipulation =<span class="st"> </span><span class="kw">lmer</span>(perce
 <td align="center">202.2</td>
 <td align="center">2.905</td>
 <td align="center">0.004087</td>
-<td align="left">**</td>
+<td align="center">**</td>
 </tr>
 <tr class="odd">
 <td align="center">perceived_p_women_1</td>
@@ -951,7 +891,7 @@ m.post_manipulation =<span class="st"> </span><span class="kw">lmer</span>(perce
 <td align="center">10.35</td>
 <td align="center">12.41</td>
 <td align="center">1.513e-07</td>
-<td align="left">***</td>
+<td align="center">***</td>
 </tr>
 </tbody>
 </table>
