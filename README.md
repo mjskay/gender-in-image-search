@@ -34,11 +34,17 @@ Please cite the CHI paper above.
 
 ```r
 library(Matching)   #ks.boot
-library(visreg)
+library(visreg)     #visreg
 library(boot)       #logit, inv.logit (could use qlogis/plogis but this is clearer) 
 library(pscl)       #vuong
 library(plyr)       #**ply
 library(ordinal)    #clmm
+library(lme4)       #lmer, glmer
+library(lmerTest)   #p-values with lmer
+library(car)        #Anova
+library(ggplot2)    #ggplot
+library(MuMIn)      #r.squaredGLMM
+library(pander)     #pander
 ```
 
 # Unequal representation and gender stereotypes in image search results for occupations
@@ -412,7 +418,7 @@ for (colname in c("p_women", "p_asian", "p_black", "p_hispanic")) {
 ##           is the same as the distribution of p_women for occupations in filtered dataset
 ## D_45,535 = 0.0996997
 ## 
-## Bootstrap p-value:     0.769 
+## Bootstrap p-value:     0.787 
 ## Naive p-value:         0.82557 
 ## Full Sample Statistic: 0.0997
 ```
@@ -425,7 +431,7 @@ for (colname in c("p_women", "p_asian", "p_black", "p_hispanic")) {
 ##           is the same as the distribution of p_asian for occupations in filtered dataset
 ## D_45,535 = 0.09009009
 ## 
-## Bootstrap p-value:     0.837 
+## Bootstrap p-value:     0.824 
 ## Naive p-value:         0.90448 
 ## Full Sample Statistic: 0.09009
 ```
@@ -438,7 +444,7 @@ for (colname in c("p_women", "p_asian", "p_black", "p_hispanic")) {
 ##           is the same as the distribution of p_black for occupations in filtered dataset
 ## D_45,535 = 0.1021021
 ## 
-## Bootstrap p-value:     0.731 
+## Bootstrap p-value:     0.704 
 ## Naive p-value:         0.80298 
 ## Full Sample Statistic: 0.1021
 ```
@@ -451,7 +457,7 @@ for (colname in c("p_women", "p_asian", "p_black", "p_hispanic")) {
 ##           is the same as the distribution of p_hispanic for occupations in filtered dataset
 ## D_45,535 = 0.1423423
 ## 
-## Bootstrap p-value:     0.34 
+## Bootstrap p-value:     0.31 
 ## Naive p-value:         0.39797 
 ## Full Sample Statistic: 0.14234
 ```
@@ -602,38 +608,30 @@ examine the intercept of the fitted model:
 summary(m.stereotyped)
 ```
 
-```
-## 
-## Call:
-## glm(formula = search_p_women ~ I(bls_p_women - 0.5), family = quasibinomial, 
-##     data = proportions, weights = search_n)
-## 
-## Deviance Residuals: 
-##     Min       1Q   Median       3Q      Max  
-## -6.5619  -1.4354   0.1609   1.5076   3.9135  
-## 
-## Coefficients:
-##                      Estimate Std. Error t value Pr(>|t|)    
-## (Intercept)           -0.2604     0.0971  -2.682   0.0103 *  
-## I(bls_p_women - 0.5)   5.3307     0.3773  14.130   <2e-16 ***
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## 
-## (Dispersion parameter for quasibinomial family taken to be 4.467219)
-## 
-##     Null deviance: 1594.45  on 44  degrees of freedom
-## Residual deviance:  204.08  on 43  degrees of freedom
-## AIC: NA
-## 
-## Number of Fisher Scoring iterations: 4
-```
+
+-----------------------------------------------------------------------
+          &nbsp;            Estimate   Std. Error   t value   Pr(>|t|) 
+-------------------------- ---------- ------------ --------- ----------
+ **I(bls_p_women - 0.5)**    5.331       0.3773      14.13    9.23e-18 
+
+     **(Intercept)**        -0.2604      0.0971     -2.682    0.01034  
+-----------------------------------------------------------------------
+
+
+(Dispersion parameter for  quasibinomial  family taken to be  4.467219 )
+
+
+------------------ -------------------------
+  Null deviance:   1594.5  on 44  degrees of
+                           freedom          
+
+Residual deviance: 204.1  on 43  degrees of 
+                           freedom          
+------------------ -------------------------
+
 
 ```r
 confint(m.stereotyped)
-```
-
-```
-## Waiting for profiling to be done...
 ```
 
 ```
@@ -657,10 +655,6 @@ exp(confint(m.stereotyped))
 ```
 
 ```
-## Waiting for profiling to be done...
-```
-
-```
 ##                           2.5 %      97.5 %
 ## (Intercept)            0.636865   0.9323517
 ## I(bls_p_women - 0.5) 101.006392 444.2106410
@@ -678,10 +672,6 @@ inv.logit(coef(m.stereotyped))
 
 ```r
 inv.logit(confint(m.stereotyped))
-```
-
-```
-## Waiting for profiling to be done...
 ```
 
 ```
@@ -772,9 +762,24 @@ names(m.adjectives) = adjectives
 ```
 
 We used the coefficients of the image effect in each model as a
-normalized rating for that adjective. These ratings have the effects of turker,
-turker gender, image gender, and their interaction factored out and are all
-approximately standard normally distributed.
+normalized rating for that adjective on that image:
+
+
+```r
+#make data frame with only one row per rated image to hold normalized ratings
+#columns 3:8 are image and occupation characteristics
+rated_images = ddply(adjective_ratings, ~ image_url, function(df) df[1,3:8])
+
+#add the normalized adjective ratings to the rated images
+for (adjective in adjectives) {
+    standardized_adjective = ranef(m.adjectives[[adjective]])$image_url
+    rated_images[[adjective]] = standardized_adjective[rated_images$image_url,]
+}
+```
+
+These ratings have the effects of turker, turker gender, image gender, and
+their interaction factored out and are all approximately standard normally
+distributed.
 
 ### Stereotyping bias in qualitative ratings
 
@@ -790,6 +795,24 @@ according to the BLS), and the interaction of these two terms as fixed effects.
 The models also included the occupation as a random effect. As noted above, we
 are primarily interested in these factors as controls in Study 3 (below), so we
 only summarize two high-level trends in the results here.
+
+```
+Anova(lmer(professional ~ image_gender*bls_p_image_gender + (1|search_term), 
+    data=rated_images), test="F")
+Anova(lmer(attractive ~ image_gender*bls_p_image_gender + (1|search_term), 
+    data=rated_images), test="F")
+Anova(lmer(sexy ~ image_gender*bls_p_image_gender + (1|search_term), 
+    data=rated_images), test="F")
+Anova(lmer(competent ~ image_gender*bls_p_image_gender + (1|search_term), 
+    data=rated_images), test="F")
+Anova(lmer(inappropriate ~ image_gender*bls_p_image_gender + (1|search_term), 
+    data=rated_images), test="F")
+Anova(lmer(trustworthy ~ image_gender*bls_p_image_gender + (1|search_term), 
+    data=rated_images), test="F")
+Anova(lmer(provocative ~ image_gender*bls_p_image_gender + (1|search_term), 
+    data=rated_images), test="F")
+
+```
 
 First, adjectives like professional (F1,623.6 = 36.6, p < 0.0001), competent
 (F1,630 = 28.4, p < 0.0001), and trustworthy (F1,627.8 = 33.8, p < 0.0001) had
@@ -836,9 +859,9 @@ probability of an image being selected, the baseline probability of two images
 of different gender being selected for any occupation will be the same: ⅛
 (regardless of the gender ratio in that occupation).
 
-To generate a subset with k women, we selected the top k female images from our
+To generate a subset with _k_ women, we selected the top _k_ female images from our
 labelled dataset (in the order they appeared in the original Google image search
-results) and the top 8-k male images. The images were displayed to participants
+results) and the top 8-_k_ male images. The images were displayed to participants
 in the order they appeared in the original search results. Participants could
 view one result set per occupation. This was to prevent participants from
 realizing that we manipulated the gender proportions of the search results, as
@@ -857,8 +880,72 @@ We used logistic regression to model the probability that a given image is
 selected as the best result by a participant. Our model included image gender,
 the image gender proportion in BLS (see explanation under Study 2), participant
 gender, and their interactions. We also included all of the image adjective
-ratings to control for differences in qualitative representation. Results are
-shown in Table 1.
+ratings to control for differences in qualitative representation. 
+
+
+```r
+selected_images = read.csv("data/public/selected_images.csv")
+selected_images = join(selected_images, rated_images)
+
+m.selected_image = glm(image_selected ~ bls_p_image_gender * image_gender * participant_gender +
+    professional + attractive + inappropriate + provocative + sexy + competent + trustworthy + weird, 
+    data=selected_images, family=binomial)
+
+summary(m.selected_image)
+```
+
+
+--------------------------------------------------------------------------------------------------------------
+                             &nbsp;                                Estimate   Std. Error   z value   Pr(>|z|) 
+----------------------------------------------------------------- ---------- ------------ --------- ----------
+                     **bls_p_image_gender**                         0.9387      0.4152      2.261    0.02376  
+
+                      **image_genderwoman**                         0.2249      0.3608     0.6233     0.5331  
+
+                   **participant_gendermale**                      0.04391      0.3939     0.1115     0.9112  
+
+                        **professional**                           -0.08313    0.08171     -1.017     0.309   
+
+                         **attractive**                            -0.01925    0.07924     -0.2429    0.8081  
+
+                        **inappropriate**                          -0.03018     0.1087     -0.2776    0.7813  
+
+                         **provocative**                           -0.3159      0.1655     -1.909    0.05628  
+
+                            **sexy**                               -0.02669     0.0872     -0.3061    0.7596  
+
+                          **competent**                             0.4691      0.103       4.553   5.282e-06 
+
+                         **trustworthy**                           -0.1117     0.08269     -1.351     0.1766  
+
+                            **weird**                              -0.4916      0.1113     -4.416   1.006e-05 
+
+            **bls_p_image_gender:image_genderwoman**               -0.1885      0.5857     -0.3219    0.7476  
+
+          **bls_p_image_gender:participant_gendermale**           -0.006446     0.5957    -0.01082    0.9914  
+
+          **image_genderwoman:participant_gendermale**             0.01022      0.513      0.01993    0.9841  
+
+ **bls_p_image_gender:image_genderwoman:participant_gendermale**   -0.1601      0.8342     -0.1919    0.8478  
+
+                         **(Intercept)**                            -2.67       0.2744     -9.731    2.23e-22 
+--------------------------------------------------------------------------------------------------------------
+
+
+(Dispersion parameter for  binomial  family taken to be  1 )
+
+
+------------------ -------------------------
+  Null deviance:   2465  on 3267  degrees of
+                           freedom          
+
+Residual deviance: 2336  on 3252  degrees of
+                           freedom          
+------------------ -------------------------
+
+_**Table 1**. Factors affecting image selection in Study 3. Coefficients are on a
+logit scale. Note the stereotype effect: greater % image gender in BLS is
+associated with higher probability that an image is selected._
 
 #### Over-/under- representation and participant effects
 
@@ -878,22 +965,127 @@ occupation was more likely to be selected. We believe this is consequence of
 stereotype matching: an image matching a person’s stereotype for that gender is
 more likely to be selected as an exemplar result.
 
-```Table 1. Factors affecting image selection in Study 3. Coefficients are on a
-logit scale. Note the stereotype effect: greater % image gender in BLS is
-associated with higher probability that an image is selected.```
+We can see this effect by looking at the predicted probability that an image
+is selected given the proportion of people in that occupation having the
+gender of that image:
 
-```Table 2. Factors affecting search result quality ratings in Study 3.
-Coefficients are on a logit scale.```
+
+```r
+visreg(m.selected_image, "bls_p_image_gender", "image_gender", scale="response", rug=FALSE)
+```
+
+![plot of chunk image_selected_by_bls_p_image_gender_visreg](figure/image_selected_by_bls_p_image_gender_visreg-1.png) 
+
+Or in the original data: (N.B. this is messy due to not accounting for qualitative
+differences, but still instructive in visualizing the effect in the raw data)
+
+
+```r
+ggplot(selected_images, aes(x=bls_p_image_gender, fill=factor(image_selected, levels=c(TRUE, FALSE)))) + 
+    geom_bar(position="fill", binwidth=.1) + 
+    guides(fill=guide_legend(title="image selected")) + 
+    ylim(0, .4) +
+    geom_hline(yintercept=1/8, lty="dashed")        # reference line for "chance"
+```
+
+![plot of chunk image_selected_by_bls_p_image_gender_plot](figure/image_selected_by_bls_p_image_gender_plot-1.png) 
 
 ### Search Result Quality Rating Results
 
 We saw very similar effects influencing quality rating. We ran a mixed effects
 ordinal logistic regression to model quality rating based on proportion of women
 in BLS, proportion of women in the synthetic search result, participant gender,
-and their interactions. We included the mean of the image adjective ratings in
-the synthetic search result to control for differences in qualitative
-representation. We also included participant and search term (occupation) as
-random effects. Results are in Table 2.
+and their interactions. We included the adjective rating of the selected image
+(as possibly the most salient in judging search quality) in the synthetic search
+result to control for differences in qualita-tive representation. We also
+included participant and search term (occupation) as random effects. Results are
+in Table 2.
+
+
+```r
+#build table of synthetic search result quality ratings with mean adjective ratings
+synthetic_searches = ddply(selected_images, ~ participant + participant_gender + search_term +
+    bls_p_women + search_p_women + synthetic_p_women + quality_rating, function(df) {
+        selected.adj = df[df$image_selected,adjectives][1,]
+        selected.adj
+    })
+
+#make quality ratings ordinal 
+synthetic_searches$quality_rating = ordered(synthetic_searches$quality_rating,
+    levels=c("very poor", "poor", "fair", "good", "very good"))
+
+m.quality_rating = clmm(quality_rating ~ synthetic_p_women * bls_p_women * participant_gender +
+    professional + attractive + inappropriate + provocative + sexy + competent + trustworthy + weird + 
+    (1|participant) + (1|search_term), data=synthetic_searches)
+
+summary(m.quality_rating)
+```
+
+
+---------------------------------------------
+  Groups       Name      Variance   Std.Dev. 
+----------- ----------- ---------- ----------
+participant (Intercept)   1.6499     1.2845  
+
+search_term (Intercept)   2.2646     1.5049  
+---------------------------------------------
+
+Table: Random effects
+
+
+------------------------------------------------------------------------------------------------------
+                        &nbsp;                          Estimate   Std. Error   z value   Pr(>|z|)    
+------------------------------------------------------ ---------- ------------ --------- ---------- --
+                  synthetic_p_women                      -2.16       0.8965     -2.409     0.016    * 
+
+                     bls_p_women                         -3.113      1.344      -2.316    0.02058   * 
+
+                participant_gendermale                   0.219       0.8672     0.2525     0.8007     
+
+                     professional                       -0.1323      0.1864     -0.7099    0.4778     
+
+                      attractive                        0.08522      0.1776     0.4797     0.6314     
+
+                    inappropriate                        0.3792      0.2463      1.539     0.1237     
+
+                     provocative                         -0.417      0.3288     -1.268     0.2046     
+
+                         sexy                           -0.01793     0.2083    -0.08609    0.9314     
+
+                      competent                          0.4569      0.2241      2.039     0.0415   * 
+
+                     trustworthy                        -0.1625      0.209      -0.7773    0.437      
+
+                        weird                           -0.4745      0.2182     -2.174    0.02968   * 
+
+            synthetic_p_women:bls_p_women                5.304       1.704       3.112    0.001857  **
+
+       synthetic_p_women:participant_gendermale         -0.6912      1.225      -0.5642    0.5726     
+
+          bls_p_women:participant_gendermale            -0.4531      1.358      -0.3338    0.7385     
+
+ synthetic_p_women:bls_p_women:participant_gendermale    1.869       2.323      0.8045     0.4211     
+------------------------------------------------------------------------------------------------------
+
+Table: Fixed effects
+
+
+--------------------------------------------------
+     &nbsp;       Estimate   Std. Error   z value 
+---------------- ---------- ------------ ---------
+ very poor|poor    -5.131      0.847      -6.058  
+
+   poor|fair       -3.539      0.8133     -4.351  
+
+   fair|good       -1.511      0.7904     -1.912  
+
+ good|very good    0.866       0.7852      1.103  
+--------------------------------------------------
+
+Table: Threshold coefficients
+
+_**Table 2**. Factors affecting search result quality ratings in Study 3.
+Coefficients are on a logit scale._
 
 #### Over-/under- representation and participant effects
 
@@ -909,7 +1101,27 @@ We again saw a stereotype exaggeration effect, manifested here as a significant
 interaction between proportion of women in BLS and proportion of women in the
 search result: in male-dominated occupations, search results with more males are
 preferred; in female-dominated occupations, search results with more females are
-preferred.
+preferred. 
+
+We can roughly see this effect in the data:
+
+
+```r
+#plotting ordinal data against multiple dimensions is something of a pain.
+#Rather than resorting to treating it as continuous data, we'll group 
+#BLS % women and % women in synthetic results into thirds in order to show 
+#the effect of the interaction of both
+synthetic_searches$bls_p_women_thirds = ordered(symnum(synthetic_searches$bls_p_women, 
+    cutpoints=0:3/3, symbols=1:3), 
+    labels=c("< 1/3 women in BLS","1/3 - 2/3 women in BLS","> 2/3 women in BLS"))
+   
+ggplot(synthetic_searches, aes(x=synthetic_p_women, fill=quality_rating, order=-as.numeric(quality_rating))) + 
+    geom_bar(position="fill", breaks=0:3/3) + 
+    scale_fill_brewer(type="seq") + 
+    facet_wrap(~bls_p_women_thirds)
+```
+
+![plot of chunk quality_rating_stereotype_plot](figure/quality_rating_stereotype_plot-1.png) 
 
 Viewed from the perspective of this task, these results make sense: we asked
 people to select the best search result (or to rate the quality of all results),
@@ -957,17 +1169,115 @@ career, percent women, whether the career was growing, and its prestige.
 
 #### Perceptions absent influence
 
+
+```r
+#This is the full set of people who did the first part of the task (stating their
+#perceived gender proportions of occupations). Not all of these participants
+#returned to fill out part 2 (the post-manipulation) 
+manipulated_perceptions_pre = read.csv("data/public/manipulated_perceptions_pre.csv")
+
+m.pre_manipulation = lmer(perceived_p_women_1 ~ bls_p_women + 
+    (1|participant), 
+    data=manipulated_perceptions_pre)
+
+summary(m.pre_manipulation)
+```
+
+```
+Random effects:
+ Groups      Name        Std.Dev.
+ participant (Intercept) 0.049814
+ Residual                0.134069
+```
+
+
+--------------------------------------------------------------------
+   &nbsp;      Estimate   Std. Error   df    t value   Pr(>|t|)     
+------------- ---------- ------------ ----- --------- ---------- ---
+ (Intercept)   0.08139     0.01807    34.47   4.505   7.273e-05  ***
+
+ bls_p_women    0.7312     0.02479    297.9   29.5        0      ***
+--------------------------------------------------------------------
+
+Table: Fixed effects. Linear mixed model fit by REML 
+t-tests use  Satterthwaite approximations to degrees of freedom
+
+
+
+
+```r
+r.squaredGLMM(m.pre_manipulation)
+```
+
+```
+##       R2m       R2c 
+## 0.7165295 0.7509160
+```
+
 People’s initial perceptions of gender proportions in occupations are quite
 good. We assessed the correlation of their existing perceptions to real-world
 proportions using a mixed-effects linear regression with gender proportions in
 BLS as the fixed effect and participant as a random effect. The marginal
 pseudo-R<sup>2</sup> of this model was 0.717 (F1,297.71 = 870.21, p < 0.0001).
+A plot of partial residuals shows the correspondence:
+
+
+
+```r
+visreg(m.pre_manipulation, "bls_p_women")
+```
+
+![plot of chunk perceptions_before_manipulation_visreg](figure/perceptions_before_manipulation_visreg-1.png) 
 
 #### Perceptions after influence
 
-```Table 3. Effects of the manipulated search result and a person’s pre-existing
+
+```r
+#Not all of the participants above returned to fill out part 2.
+#In this part we examine only those who returned. 
+manipulated_perceptions_post = read.csv("data/public/manipulated_perceptions_post.csv")
+m.post_manipulation = lmer(perceived_p_women_2 ~ synthetic_p_women + perceived_p_women_1 + 
+    (perceived_p_women_1|participant), 
+    data=manipulated_perceptions_post)
+
+summary(m.post_manipulation)
+```
+
+```
+Random effects:
+ Groups      Name                Std.Dev. Corr  
+ participant (Intercept)         0.10568        
+             perceived_p_women_1 0.19221  -1.000
+ Residual                        0.10140        
+```
+
+
+----------------------------------------------------------------------------
+       &nbsp;          Estimate   Std. Error   df    t value   Pr(>|t|)     
+--------------------- ---------- ------------ ----- --------- ---------- ---
+     (Intercept)       0.09859     0.03442    15.71   2.864     0.0114    * 
+
+  synthetic_p_women    0.06727     0.02316    202.2   2.905    0.004087  ** 
+
+ perceived_p_women_1    0.7488     0.06034    10.35   12.41   1.513e-07  ***
+----------------------------------------------------------------------------
+
+Table: Fixed effects. Linear mixed model fit by REML 
+t-tests use  Satterthwaite approximations to degrees of freedom
+
+_**Table 3**. Effects of the manipulated search result and a person’s pre-existing
 opinion of % women in an occupation on their opinion after seeing the
-manipulated result (Study 4).```
+manipulated result (Study 4)._
+
+
+```r
+r.squaredGLMM(m.post_manipulation)
+```
+
+```
+##       R2m       R2c 
+## 0.6986316 0.7624350
+```
 
 After exposure to search results with manipulated gender proportions, estimates
 shifted slightly in the direction of the manipulated proportions. We ran a
@@ -978,6 +1288,24 @@ significant: while a person’s original perceptions of an occupation dominated
 their opinion two weeks later; approximately 7% of a person’s subsequent opinion
 on average was determined by the result set they were exposed to (p < 0.01, see
 Table 3).
+
+We can see the strong association with their pre-existing opinion:
+
+
+```r
+visreg(m.post_manipulation, "perceived_p_women_1")
+```
+
+![plot of chunk perceptions_after_manipulation_vs_before_visreg](figure/perceptions_after_manipulation_vs_before_visreg-1.png) 
+
+And the much weaker (but present) effect of the manipulated search results:
+
+
+```r
+visreg(m.post_manipulation, "synthetic_p_women")
+```
+
+![plot of chunk perceptions_after_manipulation_vs_search_visreg](figure/perceptions_after_manipulation_vs_search_visreg-1.png) 
 
 While this only shows short-term movement due to manipulated search results,
 cultivation theory suggests that long-term, ongoing exposure to such results
