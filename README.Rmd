@@ -32,6 +32,7 @@ Please cite the CHI paper above.
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(cache=TRUE)           #default code chunk options
 panderOptions("table.split.table", Inf)     #don't split wide tables in output
+panderOptions("table.style", "rmarkdown")   #table style that's supported by github
 source("util.R")                            #helpers for analysis and output formatting
 ```
 
