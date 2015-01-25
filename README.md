@@ -611,8 +611,8 @@ summary(m.stereotyped)
 
 |           &nbsp;           |  Estimate  |  Std. Error  |  t value  |  Pr(>|t|)  |
 |:--------------------------:|:----------:|:------------:|:---------:|:----------:|
-|  **I(bls_p_women - 0.5)**  |   5.331    |    0.3773    |   14.13   |  9.23e-18  |
-|      **(Intercept)**       |  -0.2604   |    0.0971    |  -2.682   |  0.01034   |
+|    I(bls_p_women - 0.5)    |   5.331    |    0.3773    |   14.13   |  9.23e-18  |
+|        (Intercept)         |  -0.2604   |    0.0971    |  -2.682   |  0.01034   |
 
 
 (Dispersion parameter for  quasibinomial  family taken to be  4.467219 )
