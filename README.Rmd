@@ -30,16 +30,24 @@ Please cite the CHI paper above.
 ## Libraries needed for the analyses in this paper
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(cache=TRUE)
+knitr::opts_chunk$set(cache=TRUE)           #default code chunk options
+panderOptions("table.split.table", Inf)     #don't split wide tables in output
+source("util.R")                            #helpers for analysis and output formatting
 ```
 
-```{r libraries}
+```{r libraries, message=FALSE, warning=FALSE}
 library(Matching)   #ks.boot
-library(visreg)
+library(visreg)     #visreg
 library(boot)       #logit, inv.logit (could use qlogis/plogis but this is clearer) 
 library(pscl)       #vuong
 library(plyr)       #**ply
 library(ordinal)    #clmm
+library(lme4)       #lmer, glmer
+library(lmerTest)   #p-values with lmer
+library(car)        #Anova
+library(ggplot2)    #ggplot
+library(MuMIn)      #r.squaredGLMM
+library(pander)     #pander
 ```
 
 # Unequal representation and gender stereotypes in image search results for occupations
@@ -520,9 +528,16 @@ significantly different from 0 when the x-intercept is set to 50% women in the
 BLS. Since we fit the model with that x-intercept already, it suffices to
 examine the intercept of the fitted model:
 
-```{r stereotyped_model_coef}
+```{r stereotyped_model_coef_1, eval=FALSE}
 #regression model coefficients and confidence intervals
 summary(m.stereotyped)
+```
+
+```{r stereotyped_model_coef_2, echo=FALSE, results='asis'}
+pander(summary(m.stereotyped))
+```
+
+```{r stereotyped_model_coef_3, message=FALSE}
 confint(m.stereotyped)
 
 #coefficients as odds ratios
@@ -615,9 +630,24 @@ names(m.adjectives) = adjectives
 ```
 
 We used the coefficients of the image effect in each model as a
-normalized rating for that adjective. These ratings have the effects of turker,
-turker gender, image gender, and their interaction factored out and are all
-approximately standard normally distributed.
+normalized rating for that adjective on that image:
+
+```{r rated_images}
+#make data frame with only one row per rated image to hold normalized ratings
+#columns 3:8 are image and occupation characteristics
+rated_images = ddply(adjective_ratings, ~ image_url, function(df) df[1,3:8])
+
+#add the normalized adjective ratings to the rated images
+for (adjective in adjectives) {
+    standardized_adjective = ranef(m.adjectives[[adjective]])$image_url
+    rated_images[[adjective]] = standardized_adjective[rated_images$image_url,]
+}
+
+```
+
+These ratings have the effects of turker, turker gender, image gender, and
+their interaction factored out and are all approximately standard normally
+distributed.
 
 ### Stereotyping bias in qualitative ratings
 
@@ -633,6 +663,24 @@ according to the BLS), and the interaction of these two terms as fixed effects.
 The models also included the occupation as a random effect. As noted above, we
 are primarily interested in these factors as controls in Study 3 (below), so we
 only summarize two high-level trends in the results here.
+
+```
+Anova(lmer(professional ~ image_gender*bls_p_image_gender + (1|search_term), 
+    data=rated_images), test="F")
+Anova(lmer(attractive ~ image_gender*bls_p_image_gender + (1|search_term), 
+    data=rated_images), test="F")
+Anova(lmer(sexy ~ image_gender*bls_p_image_gender + (1|search_term), 
+    data=rated_images), test="F")
+Anova(lmer(competent ~ image_gender*bls_p_image_gender + (1|search_term), 
+    data=rated_images), test="F")
+Anova(lmer(inappropriate ~ image_gender*bls_p_image_gender + (1|search_term), 
+    data=rated_images), test="F")
+Anova(lmer(trustworthy ~ image_gender*bls_p_image_gender + (1|search_term), 
+    data=rated_images), test="F")
+Anova(lmer(provocative ~ image_gender*bls_p_image_gender + (1|search_term), 
+    data=rated_images), test="F")
+
+```
 
 First, adjectives like professional (F1,623.6 = 36.6, p < 0.0001), competent
 (F1,630 = 28.4, p < 0.0001), and trustworthy (F1,627.8 = 33.8, p < 0.0001) had
@@ -679,9 +727,9 @@ probability of an image being selected, the baseline probability of two images
 of different gender being selected for any occupation will be the same: ⅛
 (regardless of the gender ratio in that occupation).
 
-To generate a subset with k women, we selected the top k female images from our
+To generate a subset with _k_ women, we selected the top _k_ female images from our
 labelled dataset (in the order they appeared in the original Google image search
-results) and the top 8-k male images. The images were displayed to participants
+results) and the top 8-_k_ male images. The images were displayed to participants
 in the order they appeared in the original search results. Participants could
 view one result set per occupation. This was to prevent participants from
 realizing that we manipulated the gender proportions of the search results, as
@@ -700,8 +748,26 @@ We used logistic regression to model the probability that a given image is
 selected as the best result by a participant. Our model included image gender,
 the image gender proportion in BLS (see explanation under Study 2), participant
 gender, and their interactions. We also included all of the image adjective
-ratings to control for differences in qualitative representation. Results are
-shown in Table 1.
+ratings to control for differences in qualitative representation. 
+
+```{r image_selection_model, results='hide', message=FALSE}
+selected_images = read.csv("data/public/selected_images.csv")
+selected_images = join(selected_images, rated_images)
+
+m.selected_image = glm(image_selected ~ bls_p_image_gender * image_gender * participant_gender +
+    professional + attractive + inappropriate + provocative + sexy + competent + trustworthy + weird, 
+    data=selected_images, family=binomial)
+
+summary(m.selected_image)
+```
+
+```{r image_selection_model_table, echo=FALSE, results='asis'}
+pander(summary(m.selected_image))
+```
+
+_**Table 1**. Factors affecting image selection in Study 3. Coefficients are on a
+logit scale. Note the stereotype effect: greater % image gender in BLS is
+associated with higher probability that an image is selected._
 
 #### Over-/under- representation and participant effects
 
@@ -721,22 +787,61 @@ occupation was more likely to be selected. We believe this is consequence of
 stereotype matching: an image matching a person’s stereotype for that gender is
 more likely to be selected as an exemplar result.
 
-```Table 1. Factors affecting image selection in Study 3. Coefficients are on a
-logit scale. Note the stereotype effect: greater % image gender in BLS is
-associated with higher probability that an image is selected.```
+We can see this effect by looking at the predicted probability that an image
+is selected given the proportion of people in that occupation having the
+gender of that image:
 
-```Table 2. Factors affecting search result quality ratings in Study 3.
-Coefficients are on a logit scale.```
+```{r image_selected_by_bls_p_image_gender_visreg}
+visreg(m.selected_image, "bls_p_image_gender", "image_gender", scale="response", rug=FALSE)
+```
+
+Or in the original data: (N.B. this is messy due to not accounting for qualitative
+differences, but still instructive in visualizing the effect in the raw data)
+
+```{r image_selected_by_bls_p_image_gender_plot}
+ggplot(selected_images, aes(x=bls_p_image_gender, fill=factor(image_selected, levels=c(TRUE, FALSE)))) + 
+    geom_bar(position="fill", binwidth=.1) + 
+    guides(fill=guide_legend(title="image selected")) + 
+    ylim(0, .4) +
+    geom_hline(yintercept=1/8, lty="dashed")        # reference line for "chance"
+```
 
 ### Search Result Quality Rating Results
 
 We saw very similar effects influencing quality rating. We ran a mixed effects
 ordinal logistic regression to model quality rating based on proportion of women
 in BLS, proportion of women in the synthetic search result, participant gender,
-and their interactions. We included the mean of the image adjective ratings in
-the synthetic search result to control for differences in qualitative
-representation. We also included participant and search term (occupation) as
-random effects. Results are in Table 2.
+and their interactions. We included the adjective rating of the selected image
+(as possibly the most salient in judging search quality) in the synthetic search
+result to control for differences in qualita-tive representation. We also
+included participant and search term (occupation) as random effects. Results are
+in Table 2.
+
+```{r synthetic_search_quality_ratings_model, results='hide'}
+#build table of synthetic search result quality ratings with mean adjective ratings
+synthetic_searches = ddply(selected_images, ~ participant + participant_gender + search_term +
+    bls_p_women + search_p_women + synthetic_p_women + quality_rating, function(df) {
+        selected.adj = df[df$image_selected,adjectives][1,]
+        selected.adj
+    })
+
+#make quality ratings ordinal 
+synthetic_searches$quality_rating = ordered(synthetic_searches$quality_rating,
+    levels=c("very poor", "poor", "fair", "good", "very good"))
+
+m.quality_rating = clmm(quality_rating ~ synthetic_p_women * bls_p_women * participant_gender +
+    professional + attractive + inappropriate + provocative + sexy + competent + trustworthy + weird + 
+    (1|participant) + (1|search_term), data=synthetic_searches)
+
+summary(m.quality_rating)
+```
+
+```{r synthetic_search_quality_ratings_model_table, echo=FALSE, results='asis'}
+pander(summary(m.quality_rating))
+```
+
+_**Table 2**. Factors affecting search result quality ratings in Study 3.
+Coefficients are on a logit scale._
 
 #### Over-/under- representation and participant effects
 
@@ -752,7 +857,24 @@ We again saw a stereotype exaggeration effect, manifested here as a significant
 interaction between proportion of women in BLS and proportion of women in the
 search result: in male-dominated occupations, search results with more males are
 preferred; in female-dominated occupations, search results with more females are
-preferred.
+preferred. 
+
+We can roughly see this effect in the data:
+
+```{r quality_rating_stereotype_plot}
+#plotting ordinal data against multiple dimensions is something of a pain.
+#Rather than resorting to treating it as continuous data, we'll group 
+#BLS % women and % women in synthetic results into thirds in order to show 
+#the effect of the interaction of both
+synthetic_searches$bls_p_women_thirds = ordered(symnum(synthetic_searches$bls_p_women, 
+    cutpoints=0:3/3, symbols=1:3), 
+    labels=c("< 1/3 women in BLS","1/3 - 2/3 women in BLS","> 2/3 women in BLS"))
+   
+ggplot(synthetic_searches, aes(x=synthetic_p_women, fill=quality_rating, order=-as.numeric(quality_rating))) + 
+    geom_bar(position="fill", breaks=0:3/3) + 
+    scale_fill_brewer(type="seq") + 
+    facet_wrap(~bls_p_women_thirds)
+```
 
 Viewed from the perspective of this task, these results make sense: we asked
 people to select the best search result (or to rate the quality of all results),
@@ -800,17 +922,68 @@ career, percent women, whether the career was growing, and its prestige.
 
 #### Perceptions absent influence
 
+```{r perceptions_before_manipulation, results='hide'}
+#This is the full set of people who did the first part of the task (stating their
+#perceived gender proportions of occupations). Not all of these participants
+#returned to fill out part 2 (the post-manipulation) 
+manipulated_perceptions_pre = read.csv("data/public/manipulated_perceptions_pre.csv")
+
+m.pre_manipulation = lmer(perceived_p_women_1 ~ bls_p_women + 
+    (1|participant), 
+    data=manipulated_perceptions_pre)
+
+summary(m.pre_manipulation)
+```
+
+```{r perceptions_before_manipulation_table, results='asis', echo=FALSE}
+pander(summary(m.pre_manipulation))
+```
+
+```{r, echo=FALSE}
+#fix conflict in which version of VarCorr to use (possibly caused by lmerTest?)
+VarCorr.merModLmerTest = lme4:::VarCorr.merMod
+```
+
+```{r perceptions_before_manipulation_rsquared}
+r.squaredGLMM(m.pre_manipulation)
+```
+
 People’s initial perceptions of gender proportions in occupations are quite
 good. We assessed the correlation of their existing perceptions to real-world
 proportions using a mixed-effects linear regression with gender proportions in
 BLS as the fixed effect and participant as a random effect. The marginal
 pseudo-R<sup>2</sup> of this model was 0.717 (F1,297.71 = 870.21, p < 0.0001).
+A plot of partial residuals shows the correspondence:
+
+
+```{r perceptions_before_manipulation_visreg, message=FALSE}
+visreg(m.pre_manipulation, "bls_p_women")
+```
 
 #### Perceptions after influence
 
-```Table 3. Effects of the manipulated search result and a person’s pre-existing
+```{r perceptions_after_manipulation, results='hide'}
+#Not all of the participants above returned to fill out part 2.
+#In this part we examine only those who returned. 
+manipulated_perceptions_post = read.csv("data/public/manipulated_perceptions_post.csv")
+m.post_manipulation = lmer(perceived_p_women_2 ~ synthetic_p_women + perceived_p_women_1 + 
+    (perceived_p_women_1|participant), 
+    data=manipulated_perceptions_post)
+
+summary(m.post_manipulation)
+```
+
+```{r perceptions_after_manipulation_table, results='asis', echo=FALSE}
+pander(summary(m.post_manipulation))
+```
+
+_**Table 3**. Effects of the manipulated search result and a person’s pre-existing
 opinion of % women in an occupation on their opinion after seeing the
-manipulated result (Study 4).```
+manipulated result (Study 4)._
+
+```{r perceptions_after_manipulation_rsquared}
+r.squaredGLMM(m.post_manipulation)
+```
 
 After exposure to search results with manipulated gender proportions, estimates
 shifted slightly in the direction of the manipulated proportions. We ran a
@@ -821,6 +994,18 @@ significant: while a person’s original perceptions of an occupation dominated
 their opinion two weeks later; approximately 7% of a person’s subsequent opinion
 on average was determined by the result set they were exposed to (p < 0.01, see
 Table 3).
+
+We can see the strong association with their pre-existing opinion:
+
+```{r perceptions_after_manipulation_vs_before_visreg, message=FALSE}
+visreg(m.post_manipulation, "perceived_p_women_1")
+```
+
+And the much weaker (but present) effect of the manipulated search results:
+
+```{r perceptions_after_manipulation_vs_search_visreg, message=FALSE}
+visreg(m.post_manipulation, "synthetic_p_women")
+```
 
 While this only shows short-term movement due to manipulated search results,
 cultivation theory suggests that long-term, ongoing exposure to such results
