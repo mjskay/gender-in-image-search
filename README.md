@@ -418,7 +418,7 @@ for (colname in c("p_women", "p_asian", "p_black", "p_hispanic")) {
 ##           is the same as the distribution of p_women for occupations in filtered dataset
 ## D_45,535 = 0.0996997
 ## 
-## Bootstrap p-value:     0.759 
+## Bootstrap p-value:     0.763 
 ## Naive p-value:         0.82557 
 ## Full Sample Statistic: 0.0997
 ```
@@ -431,7 +431,7 @@ for (colname in c("p_women", "p_asian", "p_black", "p_hispanic")) {
 ##           is the same as the distribution of p_asian for occupations in filtered dataset
 ## D_45,535 = 0.09009009
 ## 
-## Bootstrap p-value:     0.825 
+## Bootstrap p-value:     0.793 
 ## Naive p-value:         0.90448 
 ## Full Sample Statistic: 0.09009
 ```
@@ -444,7 +444,7 @@ for (colname in c("p_women", "p_asian", "p_black", "p_hispanic")) {
 ##           is the same as the distribution of p_black for occupations in filtered dataset
 ## D_45,535 = 0.1021021
 ## 
-## Bootstrap p-value:     0.727 
+## Bootstrap p-value:     0.729 
 ## Naive p-value:         0.80298 
 ## Full Sample Statistic: 0.1021
 ```
@@ -457,7 +457,7 @@ for (colname in c("p_women", "p_asian", "p_black", "p_hispanic")) {
 ##           is the same as the distribution of p_hispanic for occupations in filtered dataset
 ## D_45,535 = 0.1423423
 ## 
-## Bootstrap p-value:     0.327 
+## Bootstrap p-value:     0.334 
 ## Naive p-value:         0.39797 
 ## Full Sample Statistic: 0.14234
 ```
@@ -609,19 +609,12 @@ summary(m.stereotyped)
 ```
 
 
-|           &nbsp;           |  Estimate  |  Std. Error  |  t value  |  Pr(>|t|)  |
-|:--------------------------:|:----------:|:------------:|:---------:|:----------:|
-|    I(bls_p_women - 0.5)    |   5.331    |    0.3773    |   14.13   |  9.23e-18  |
-|        (Intercept)         |  -0.2604   |    0.0971    |  -2.682   |  0.01034   |
+|         &nbsp;         |  Estimate  |  Std. Error  |  t value  |    p     |     |
+|:----------------------:|:----------:|:------------:|:---------:|:--------:|:---:|
+|      (Intercept)       |  -0.2604   |    0.0971    |  -2.682   | 0.01034  |  *  |
+|  I(bls_p_women - 0.5)  |   5.331    |    0.3773    |   14.13   | 9.23e-18 | *** |
 
-
-(Dispersion parameter for  quasibinomial  family taken to be  4.467219 )
-
-
-|                    |                                   |
-|:------------------:|:---------------------------------:|
-|   Null deviance:   | 1594.5  on 44  degrees of freedom |
-| Residual deviance: | 204.1  on 43  degrees of freedom  |
+Table: Fixed effects
 
 
 ```r
@@ -889,33 +882,26 @@ summary(m.selected_image)
 ```
 
 
-|                              &nbsp;                               |  Estimate  |  Std. Error  |  z value  |  Pr(>|z|)  |
-|:-----------------------------------------------------------------:|:----------:|:------------:|:---------:|:----------:|
-|                      **bls_p_image_gender**                       |   0.9387   |    0.4152    |   2.261   |  0.02376   |
-|                       **image_genderwoman**                       |   0.2249   |    0.3608    |  0.6233   |   0.5331   |
-|                    **participant_gendermale**                     |  0.04391   |    0.3939    |  0.1115   |   0.9112   |
-|                         **professional**                          |  -0.08313  |   0.08171    |  -1.017   |   0.309    |
-|                          **attractive**                           |  -0.01925  |   0.07924    |  -0.2429  |   0.8081   |
-|                         **inappropriate**                         |  -0.03018  |    0.1087    |  -0.2776  |   0.7813   |
-|                          **provocative**                          |  -0.3159   |    0.1655    |  -1.909   |  0.05628   |
-|                             **sexy**                              |  -0.02669  |    0.0872    |  -0.3061  |   0.7596   |
-|                           **competent**                           |   0.4691   |    0.103     |   4.553   | 5.282e-06  |
-|                          **trustworthy**                          |  -0.1117   |   0.08269    |  -1.351   |   0.1766   |
-|                             **weird**                             |  -0.4916   |    0.1113    |  -4.416   | 1.006e-05  |
-|             **bls_p_image_gender:image_genderwoman**              |  -0.1885   |    0.5857    |  -0.3219  |   0.7476   |
-|           **bls_p_image_gender:participant_gendermale**           | -0.006446  |    0.5957    | -0.01082  |   0.9914   |
-|           **image_genderwoman:participant_gendermale**            |  0.01022   |    0.513     |  0.01993  |   0.9841   |
-|  **bls_p_image_gender:image_genderwoman:participant_gendermale**  |  -0.1601   |    0.8342    |  -0.1919  |   0.8478   |
-|                          **(Intercept)**                          |   -2.67    |    0.2744    |  -9.731   |  2.23e-22  |
+|                            &nbsp;                             |  Estimate  |  Std. Error  |  z value  |     p     |     |
+|:-------------------------------------------------------------:|:----------:|:------------:|:---------:|:---------:|:---:|
+|                          (Intercept)                          |   -2.67    |    0.2744    |  -9.731   | 2.23e-22  | *** |
+|                      bls_p_image_gender                       |   0.9387   |    0.4152    |   2.261   |  0.02376  |  *  |
+|                       image_genderwoman                       |   0.2249   |    0.3608    |  0.6233   |  0.5331   |     |
+|                    participant_gendermale                     |  0.04391   |    0.3939    |  0.1115   |  0.9112   |     |
+|                         professional                          |  -0.08313  |   0.08171    |  -1.017   |   0.309   |     |
+|                          attractive                           |  -0.01925  |   0.07924    |  -0.2429  |  0.8081   |     |
+|                         inappropriate                         |  -0.03018  |    0.1087    |  -0.2776  |  0.7813   |     |
+|                          provocative                          |  -0.3159   |    0.1655    |  -1.909   |  0.05628  |  .  |
+|                             sexy                              |  -0.02669  |    0.0872    |  -0.3061  |  0.7596   |     |
+|                           competent                           |   0.4691   |    0.103     |   4.553   | 5.282e-06 | *** |
+|                          trustworthy                          |  -0.1117   |   0.08269    |  -1.351   |  0.1766   |     |
+|                             weird                             |  -0.4916   |    0.1113    |  -4.416   | 1.006e-05 | *** |
+|             bls_p_image_gender:image_genderwoman              |  -0.1885   |    0.5857    |  -0.3219  |  0.7476   |     |
+|           bls_p_image_gender:participant_gendermale           | -0.006446  |    0.5957    | -0.01082  |  0.9914   |     |
+|           image_genderwoman:participant_gendermale            |  0.01022   |    0.513     |  0.01993  |  0.9841   |     |
+|  bls_p_image_gender:image_genderwoman:participant_gendermale  |  -0.1601   |    0.8342    |  -0.1919  |  0.8478   |     |
 
-
-(Dispersion parameter for  binomial  family taken to be  1 )
-
-
-|                    |                                   |
-|:------------------:|:---------------------------------:|
-|   Null deviance:   | 2465  on 3267  degrees of freedom |
-| Residual deviance: | 2336  on 3252  degrees of freedom |
+Table: Fixed effects
 
 _**Table 1**. Factors affecting image selection in Study 3. Coefficients are on a
 logit scale. Note the stereotype effect: greater % image gender in BLS is
@@ -1005,23 +991,23 @@ Table: Random effects
 
 
 
-|                         &nbsp;                         |  Estimate  |  Std. Error  |  z value  |  Pr(>|z|)  |    |
-|:------------------------------------------------------:|:----------:|:------------:|:---------:|:----------:|:--:|
-|                   synthetic_p_women                    |   -2.16    |    0.8965    |  -2.409   |   0.016    | *  |
-|                      bls_p_women                       |   -3.113   |    1.344     |  -2.316   |  0.02058   | *  |
-|                 participant_gendermale                 |   0.219    |    0.8672    |  0.2525   |   0.8007   |    |
-|                      professional                      |  -0.1323   |    0.1864    |  -0.7099  |   0.4778   |    |
-|                       attractive                       |  0.08522   |    0.1776    |  0.4797   |   0.6314   |    |
-|                     inappropriate                      |   0.3792   |    0.2463    |   1.539   |   0.1237   |    |
-|                      provocative                       |   -0.417   |    0.3288    |  -1.268   |   0.2046   |    |
-|                          sexy                          |  -0.01793  |    0.2083    | -0.08609  |   0.9314   |    |
-|                       competent                        |   0.4569   |    0.2241    |   2.039   |   0.0415   | *  |
-|                      trustworthy                       |  -0.1625   |    0.209     |  -0.7773  |   0.437    |    |
-|                         weird                          |  -0.4745   |    0.2182    |  -2.174   |  0.02968   | *  |
-|             synthetic_p_women:bls_p_women              |   5.304    |    1.704     |   3.112   |  0.001857  | ** |
-|        synthetic_p_women:participant_gendermale        |  -0.6912   |    1.225     |  -0.5642  |   0.5726   |    |
-|           bls_p_women:participant_gendermale           |  -0.4531   |    1.358     |  -0.3338  |   0.7385   |    |
-|  synthetic_p_women:bls_p_women:participant_gendermale  |   1.869    |    2.323     |  0.8045   |   0.4211   |    |
+|                         &nbsp;                         |  Estimate  |  Std. Error  |  z value  |    p     |    |
+|:------------------------------------------------------:|:----------:|:------------:|:---------:|:--------:|:--:|
+|                   synthetic_p_women                    |   -2.16    |    0.8965    |  -2.409   |  0.016   | *  |
+|                      bls_p_women                       |   -3.113   |    1.344     |  -2.316   | 0.02058  | *  |
+|                 participant_gendermale                 |   0.219    |    0.8672    |  0.2525   |  0.8007  |    |
+|                      professional                      |  -0.1323   |    0.1864    |  -0.7099  |  0.4778  |    |
+|                       attractive                       |  0.08522   |    0.1776    |  0.4797   |  0.6314  |    |
+|                     inappropriate                      |   0.3792   |    0.2463    |   1.539   |  0.1237  |    |
+|                      provocative                       |   -0.417   |    0.3288    |  -1.268   |  0.2046  |    |
+|                          sexy                          |  -0.01793  |    0.2083    | -0.08609  |  0.9314  |    |
+|                       competent                        |   0.4569   |    0.2241    |   2.039   |  0.0415  | *  |
+|                      trustworthy                       |  -0.1625   |    0.209     |  -0.7773  |  0.437   |    |
+|                         weird                          |  -0.4745   |    0.2182    |  -2.174   | 0.02968  | *  |
+|             synthetic_p_women:bls_p_women              |   5.304    |    1.704     |   3.112   | 0.001857 | ** |
+|        synthetic_p_women:participant_gendermale        |  -0.6912   |    1.225     |  -0.5642  |  0.5726  |    |
+|           bls_p_women:participant_gendermale           |  -0.4531   |    1.358     |  -0.3338  |  0.7385  |    |
+|  synthetic_p_women:bls_p_women:participant_gendermale  |   1.869    |    2.323     |  0.8045   |  0.4211  |    |
 
 Table: Fixed effects
 
@@ -1144,10 +1130,10 @@ Random effects:
 
 
 
-|    &nbsp;     |  Estimate  |  Std. Error  |  df   |  t value  |  Pr(>|t|)  |     |
-|:-------------:|:----------:|:------------:|:-----:|:---------:|:----------:|:---:|
-|  (Intercept)  |  0.08139   |   0.01807    | 34.47 |   4.505   | 7.273e-05  | *** |
-|  bls_p_women  |   0.7312   |   0.02479    | 297.9 |   29.5    |     0      | *** |
+|    &nbsp;     |  Estimate  |  Std. Error  |  df   |  t value  |     p     |     |
+|:-------------:|:----------:|:------------:|:-----:|:---------:|:---------:|:---:|
+|  (Intercept)  |  0.08139   |   0.01807    | 34.47 |   4.505   | 7.273e-05 | *** |
+|  bls_p_women  |   0.7312   |   0.02479    | 297.9 |   29.5    |     0     | *** |
 
 Table: Fixed effects. Linear mixed model fit by REML 
 t-tests use  Satterthwaite approximations to degrees of freedom
@@ -1203,11 +1189,11 @@ Random effects:
 
 
 
-|        &nbsp;         |  Estimate  |  Std. Error  |  df   |  t value  |  Pr(>|t|)  |     |
-|:---------------------:|:----------:|:------------:|:-----:|:---------:|:----------:|:---:|
-|      (Intercept)      |  0.09859   |   0.03442    | 15.71 |   2.864   |   0.0114   |  *  |
-|   synthetic_p_women   |  0.06727   |   0.02316    | 202.2 |   2.905   |  0.004087  | **  |
-|  perceived_p_women_1  |   0.7488   |   0.06034    | 10.35 |   12.41   | 1.513e-07  | *** |
+|        &nbsp;         |  Estimate  |  Std. Error  |  df   |  t value  |     p     |     |
+|:---------------------:|:----------:|:------------:|:-----:|:---------:|:---------:|:---:|
+|      (Intercept)      |  0.09859   |   0.03442    | 15.71 |   2.864   |  0.0114   |  *  |
+|   synthetic_p_women   |  0.06727   |   0.02316    | 202.2 |   2.905   | 0.004087  | **  |
+|  perceived_p_women_1  |   0.7488   |   0.06034    | 10.35 |   12.41   | 1.513e-07 | *** |
 
 Table: Fixed effects. Linear mixed model fit by REML 
 t-tests use  Satterthwaite approximations to degrees of freedom

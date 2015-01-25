@@ -143,7 +143,7 @@ for (colname in <span class="kw">c</span>(<span class="st">&quot;p_women&quot;</
 ##           is the same as the distribution of p_women for occupations in filtered dataset
 ## D_45,535 = 0.0996997
 ## 
-## Bootstrap p-value:     0.759 
+## Bootstrap p-value:     0.763 
 ## Naive p-value:         0.82557 
 ## Full Sample Statistic: 0.0997</code></pre>
 <div class="figure">
@@ -154,7 +154,7 @@ for (colname in <span class="kw">c</span>(<span class="st">&quot;p_women&quot;</
 ##           is the same as the distribution of p_asian for occupations in filtered dataset
 ## D_45,535 = 0.09009009
 ## 
-## Bootstrap p-value:     0.825 
+## Bootstrap p-value:     0.793 
 ## Naive p-value:         0.90448 
 ## Full Sample Statistic: 0.09009</code></pre>
 <div class="figure">
@@ -165,7 +165,7 @@ for (colname in <span class="kw">c</span>(<span class="st">&quot;p_women&quot;</
 ##           is the same as the distribution of p_black for occupations in filtered dataset
 ## D_45,535 = 0.1021021
 ## 
-## Bootstrap p-value:     0.727 
+## Bootstrap p-value:     0.729 
 ## Naive p-value:         0.80298 
 ## Full Sample Statistic: 0.1021</code></pre>
 <div class="figure">
@@ -176,7 +176,7 @@ for (colname in <span class="kw">c</span>(<span class="st">&quot;p_women&quot;</
 ##           is the same as the distribution of p_hispanic for occupations in filtered dataset
 ## D_45,535 = 0.1423423
 ## 
-## Bootstrap p-value:     0.327 
+## Bootstrap p-value:     0.334 
 ## Naive p-value:         0.39797 
 ## Full Sample Statistic: 0.14234</code></pre>
 <p>We did not find evidence that our filtered dataset significantly differed from the set of occupations in the BLS in terms of gender distribution, distribution of Asian people, distribution of Black or African American people, or distribution of Hispanic or Latino people. Note the close correspondence of empirical cumulative distribution functions for the filtered dataset versus the full BLS dataset.</p>
@@ -254,42 +254,33 @@ m.nonstereotyped<span class="fl">.2</span> =<span class="st"> </span><span class
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co">#regression model coefficients and confidence intervals</span>
 <span class="kw">summary</span>(m.stereotyped)</code></pre>
 <table>
+<caption>Fixed effects</caption>
 <thead>
 <tr class="header">
 <th align="center"> </th>
 <th align="center">Estimate</th>
 <th align="center">Std. Error</th>
 <th align="center">t value</th>
-<th align="center">Pr(&gt;</th>
+<th align="center">p</th>
+<th align="center"></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="center"><strong>I(bls_p_women - 0.5)</strong></td>
-<td align="center">5.331</td>
-<td align="center">0.3773</td>
-<td align="center">14.13</td>
-<td align="center">9.23e-18</td>
-</tr>
-<tr class="even">
-<td align="center"><strong>(Intercept)</strong></td>
+<td align="center">(Intercept)</td>
 <td align="center">-0.2604</td>
 <td align="center">0.0971</td>
 <td align="center">-2.682</td>
 <td align="center">0.01034</td>
-</tr>
-</tbody>
-</table>
-<p>(Dispersion parameter for quasibinomial family taken to be 4.467219 )</p>
-<table>
-<tbody>
-<tr class="odd">
-<td align="center">Null deviance:</td>
-<td align="center">1594.5 on 44 degrees of freedom</td>
+<td align="center">*</td>
 </tr>
 <tr class="even">
-<td align="center">Residual deviance:</td>
-<td align="center">204.1 on 43 degrees of freedom</td>
+<td align="center">I(bls_p_women - 0.5)</td>
+<td align="center">5.331</td>
+<td align="center">0.3773</td>
+<td align="center">14.13</td>
+<td align="center">9.23e-18</td>
+<td align="center">***</td>
 </tr>
 </tbody>
 </table>
@@ -382,140 +373,145 @@ m.selected_image =<span class="st"> </span><span class="kw">glm</span>(image_sel
 
 <span class="kw">summary</span>(m.selected_image)</code></pre>
 <table>
+<caption>Fixed effects</caption>
 <thead>
 <tr class="header">
 <th align="center"> </th>
 <th align="center">Estimate</th>
 <th align="center">Std. Error</th>
 <th align="center">z value</th>
-<th align="center">Pr(&gt;</th>
+<th align="center">p</th>
+<th align="center"></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="center"><strong>bls_p_image_gender</strong></td>
-<td align="center">0.9387</td>
-<td align="center">0.4152</td>
-<td align="center">2.261</td>
-<td align="center">0.02376</td>
-</tr>
-<tr class="even">
-<td align="center"><strong>image_genderwoman</strong></td>
-<td align="center">0.2249</td>
-<td align="center">0.3608</td>
-<td align="center">0.6233</td>
-<td align="center">0.5331</td>
-</tr>
-<tr class="odd">
-<td align="center"><strong>participant_gendermale</strong></td>
-<td align="center">0.04391</td>
-<td align="center">0.3939</td>
-<td align="center">0.1115</td>
-<td align="center">0.9112</td>
-</tr>
-<tr class="even">
-<td align="center"><strong>professional</strong></td>
-<td align="center">-0.08313</td>
-<td align="center">0.08171</td>
-<td align="center">-1.017</td>
-<td align="center">0.309</td>
-</tr>
-<tr class="odd">
-<td align="center"><strong>attractive</strong></td>
-<td align="center">-0.01925</td>
-<td align="center">0.07924</td>
-<td align="center">-0.2429</td>
-<td align="center">0.8081</td>
-</tr>
-<tr class="even">
-<td align="center"><strong>inappropriate</strong></td>
-<td align="center">-0.03018</td>
-<td align="center">0.1087</td>
-<td align="center">-0.2776</td>
-<td align="center">0.7813</td>
-</tr>
-<tr class="odd">
-<td align="center"><strong>provocative</strong></td>
-<td align="center">-0.3159</td>
-<td align="center">0.1655</td>
-<td align="center">-1.909</td>
-<td align="center">0.05628</td>
-</tr>
-<tr class="even">
-<td align="center"><strong>sexy</strong></td>
-<td align="center">-0.02669</td>
-<td align="center">0.0872</td>
-<td align="center">-0.3061</td>
-<td align="center">0.7596</td>
-</tr>
-<tr class="odd">
-<td align="center"><strong>competent</strong></td>
-<td align="center">0.4691</td>
-<td align="center">0.103</td>
-<td align="center">4.553</td>
-<td align="center">5.282e-06</td>
-</tr>
-<tr class="even">
-<td align="center"><strong>trustworthy</strong></td>
-<td align="center">-0.1117</td>
-<td align="center">0.08269</td>
-<td align="center">-1.351</td>
-<td align="center">0.1766</td>
-</tr>
-<tr class="odd">
-<td align="center"><strong>weird</strong></td>
-<td align="center">-0.4916</td>
-<td align="center">0.1113</td>
-<td align="center">-4.416</td>
-<td align="center">1.006e-05</td>
-</tr>
-<tr class="even">
-<td align="center"><strong>bls_p_image_gender:image_genderwoman</strong></td>
-<td align="center">-0.1885</td>
-<td align="center">0.5857</td>
-<td align="center">-0.3219</td>
-<td align="center">0.7476</td>
-</tr>
-<tr class="odd">
-<td align="center"><strong>bls_p_image_gender:participant_gendermale</strong></td>
-<td align="center">-0.006446</td>
-<td align="center">0.5957</td>
-<td align="center">-0.01082</td>
-<td align="center">0.9914</td>
-</tr>
-<tr class="even">
-<td align="center"><strong>image_genderwoman:participant_gendermale</strong></td>
-<td align="center">0.01022</td>
-<td align="center">0.513</td>
-<td align="center">0.01993</td>
-<td align="center">0.9841</td>
-</tr>
-<tr class="odd">
-<td align="center"><strong>bls_p_image_gender:image_genderwoman:participant_gendermale</strong></td>
-<td align="center">-0.1601</td>
-<td align="center">0.8342</td>
-<td align="center">-0.1919</td>
-<td align="center">0.8478</td>
-</tr>
-<tr class="even">
-<td align="center"><strong>(Intercept)</strong></td>
+<td align="center">(Intercept)</td>
 <td align="center">-2.67</td>
 <td align="center">0.2744</td>
 <td align="center">-9.731</td>
 <td align="center">2.23e-22</td>
-</tr>
-</tbody>
-</table>
-<p>(Dispersion parameter for binomial family taken to be 1 )</p>
-<table>
-<tbody>
-<tr class="odd">
-<td align="center">Null deviance:</td>
-<td align="center">2465 on 3267 degrees of freedom</td>
+<td align="center">***</td>
 </tr>
 <tr class="even">
-<td align="center">Residual deviance:</td>
-<td align="center">2336 on 3252 degrees of freedom</td>
+<td align="center">bls_p_image_gender</td>
+<td align="center">0.9387</td>
+<td align="center">0.4152</td>
+<td align="center">2.261</td>
+<td align="center">0.02376</td>
+<td align="center">*</td>
+</tr>
+<tr class="odd">
+<td align="center">image_genderwoman</td>
+<td align="center">0.2249</td>
+<td align="center">0.3608</td>
+<td align="center">0.6233</td>
+<td align="center">0.5331</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">participant_gendermale</td>
+<td align="center">0.04391</td>
+<td align="center">0.3939</td>
+<td align="center">0.1115</td>
+<td align="center">0.9112</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">professional</td>
+<td align="center">-0.08313</td>
+<td align="center">0.08171</td>
+<td align="center">-1.017</td>
+<td align="center">0.309</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">attractive</td>
+<td align="center">-0.01925</td>
+<td align="center">0.07924</td>
+<td align="center">-0.2429</td>
+<td align="center">0.8081</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">inappropriate</td>
+<td align="center">-0.03018</td>
+<td align="center">0.1087</td>
+<td align="center">-0.2776</td>
+<td align="center">0.7813</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">provocative</td>
+<td align="center">-0.3159</td>
+<td align="center">0.1655</td>
+<td align="center">-1.909</td>
+<td align="center">0.05628</td>
+<td align="center">.</td>
+</tr>
+<tr class="odd">
+<td align="center">sexy</td>
+<td align="center">-0.02669</td>
+<td align="center">0.0872</td>
+<td align="center">-0.3061</td>
+<td align="center">0.7596</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">competent</td>
+<td align="center">0.4691</td>
+<td align="center">0.103</td>
+<td align="center">4.553</td>
+<td align="center">5.282e-06</td>
+<td align="center">***</td>
+</tr>
+<tr class="odd">
+<td align="center">trustworthy</td>
+<td align="center">-0.1117</td>
+<td align="center">0.08269</td>
+<td align="center">-1.351</td>
+<td align="center">0.1766</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">weird</td>
+<td align="center">-0.4916</td>
+<td align="center">0.1113</td>
+<td align="center">-4.416</td>
+<td align="center">1.006e-05</td>
+<td align="center">***</td>
+</tr>
+<tr class="odd">
+<td align="center">bls_p_image_gender:image_genderwoman</td>
+<td align="center">-0.1885</td>
+<td align="center">0.5857</td>
+<td align="center">-0.3219</td>
+<td align="center">0.7476</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">bls_p_image_gender:participant_gendermale</td>
+<td align="center">-0.006446</td>
+<td align="center">0.5957</td>
+<td align="center">-0.01082</td>
+<td align="center">0.9914</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">image_genderwoman:participant_gendermale</td>
+<td align="center">0.01022</td>
+<td align="center">0.513</td>
+<td align="center">0.01993</td>
+<td align="center">0.9841</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">bls_p_image_gender:image_genderwoman:participant_gendermale</td>
+<td align="center">-0.1601</td>
+<td align="center">0.8342</td>
+<td align="center">-0.1919</td>
+<td align="center">0.8478</td>
+<td align="center"></td>
 </tr>
 </tbody>
 </table>
@@ -589,8 +585,8 @@ m.quality_rating =<span class="st"> </span><span class="kw">clmm</span>(quality_
 <th align="center">Estimate</th>
 <th align="center">Std. Error</th>
 <th align="center">z value</th>
-<th align="center">Pr(&gt;</th>
-<th align="center">z</th>
+<th align="center">p</th>
+<th align="center"></th>
 </tr>
 </thead>
 <tbody>
@@ -805,8 +801,8 @@ m.pre_manipulation =<span class="st"> </span><span class="kw">lmer</span>(percei
 <th align="center">Std. Error</th>
 <th align="center">df</th>
 <th align="center">t value</th>
-<th align="center">Pr(&gt;</th>
-<th align="center">t</th>
+<th align="center">p</th>
+<th align="center"></th>
 </tr>
 </thead>
 <tbody>
@@ -861,8 +857,8 @@ m.post_manipulation =<span class="st"> </span><span class="kw">lmer</span>(perce
 <th align="center">Std. Error</th>
 <th align="center">df</th>
 <th align="center">t value</th>
-<th align="center">Pr(&gt;</th>
-<th align="center">t</th>
+<th align="center">p</th>
+<th align="center"></th>
 </tr>
 </thead>
 <tbody>
