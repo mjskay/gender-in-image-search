@@ -839,15 +839,14 @@ m.pre_manipulation =<span class="st"> </span><span class="kw">lmer</span>(percei
 <span class="co">#In this part we examine only those who returned. </span>
 manipulated_perceptions_post =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/public/manipulated_perceptions_post.csv&quot;</span>)
 m.post_manipulation =<span class="st"> </span><span class="kw">lmer</span>(perceived_p_women_2 ~<span class="st"> </span>synthetic_p_women +<span class="st"> </span>perceived_p_women_1 +<span class="st"> </span>
-<span class="st">    </span>(perceived_p_women_1|participant), 
+<span class="st">    </span>(<span class="dv">1</span>|participant), 
     <span class="dt">data=</span>manipulated_perceptions_post)
 
 <span class="kw">summary</span>(m.post_manipulation)</code></pre>
 <pre><code>Random effects:
- Groups      Name                Std.Dev. Corr  
- participant (Intercept)         0.10568        
-             perceived_p_women_1 0.19221  -1.000
- Residual                        0.10140        </code></pre>
+ Groups      Name        Std.Dev.
+ participant (Intercept) 0.027758
+ Residual                0.107698</code></pre>
 <table>
 <caption>Fixed effects. Linear mixed model fit by REML t-tests use Satterthwaite approximations to degrees of freedom</caption>
 <thead>
@@ -864,29 +863,29 @@ m.post_manipulation =<span class="st"> </span><span class="kw">lmer</span>(perce
 <tbody>
 <tr class="odd">
 <td align="center">(Intercept)</td>
-<td align="center">0.09859</td>
-<td align="center">0.03442</td>
-<td align="center">15.71</td>
-<td align="center">2.864</td>
-<td align="center">0.0114</td>
-<td align="center">*</td>
+<td align="center">0.07444</td>
+<td align="center">0.02123</td>
+<td align="center">103.7</td>
+<td align="center">3.506</td>
+<td align="center">0.0006736</td>
+<td align="center">***</td>
 </tr>
 <tr class="even">
 <td align="center">synthetic_p_women</td>
-<td align="center">0.06727</td>
-<td align="center">0.02316</td>
-<td align="center">202.2</td>
-<td align="center">2.905</td>
-<td align="center">0.004087</td>
+<td align="center">0.07028</td>
+<td align="center">0.02427</td>
+<td align="center">206.5</td>
+<td align="center">2.896</td>
+<td align="center">0.004184</td>
 <td align="center">**</td>
 </tr>
 <tr class="odd">
 <td align="center">perceived_p_women_1</td>
-<td align="center">0.7488</td>
-<td align="center">0.06034</td>
-<td align="center">10.35</td>
-<td align="center">12.41</td>
-<td align="center">1.513e-07</td>
+<td align="center">0.8028</td>
+<td align="center">0.03268</td>
+<td align="center">212</td>
+<td align="center">24.57</td>
+<td align="center">0</td>
 <td align="center">***</td>
 </tr>
 </tbody>
@@ -894,7 +893,7 @@ m.post_manipulation =<span class="st"> </span><span class="kw">lmer</span>(perce
 <p><em><strong>Table 3</strong>. Effects of the manipulated search result and a person’s pre-existing opinion of % women in an occupation on their opinion after seeing the manipulated result (Study 4).</em></p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">r.squaredGLMM</span>(m.post_manipulation)</code></pre>
 <pre><code>##       R2m       R2c 
-## 0.6986316 0.7624350</code></pre>
+## 0.7374251 0.7537811</code></pre>
 <p>After exposure to search results with manipulated gender proportions, estimates shifted slightly in the direction of the manipulated proportions. We ran a linear mixed-effects regression to predict perceived gender proportions, with initial perceived gender proportion and manipulated search gender proportion as fixed effects and participant as a random effect. Both fixed effects were significant: while a person’s original perceptions of an occupation dominated their opinion two weeks later; approximately 7% of a person’s subsequent opinion on average was determined by the result set they were exposed to (p &lt; 0.01, see Table 3).</p>
 <p>We can see the strong association with their pre-existing opinion:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">visreg</span>(m.post_manipulation, <span class="st">&quot;perceived_p_women_1&quot;</span>)</code></pre>

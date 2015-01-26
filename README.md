@@ -1173,7 +1173,7 @@ visreg(m.pre_manipulation, "bls_p_women")
 #In this part we examine only those who returned. 
 manipulated_perceptions_post = read.csv("data/public/manipulated_perceptions_post.csv")
 m.post_manipulation = lmer(perceived_p_women_2 ~ synthetic_p_women + perceived_p_women_1 + 
-    (perceived_p_women_1|participant), 
+    (1|participant), 
     data=manipulated_perceptions_post)
 
 summary(m.post_manipulation)
@@ -1181,19 +1181,18 @@ summary(m.post_manipulation)
 
 ```
 Random effects:
- Groups      Name                Std.Dev. Corr  
- participant (Intercept)         0.10568        
-             perceived_p_women_1 0.19221  -1.000
- Residual                        0.10140        
+ Groups      Name        Std.Dev.
+ participant (Intercept) 0.027758
+ Residual                0.107698
 ```
 
 
 
 |        &nbsp;         |  Estimate  |  Std. Error  |  df   |  t value  |     p     |     |
 |:---------------------:|:----------:|:------------:|:-----:|:---------:|:---------:|:---:|
-|      (Intercept)      |  0.09859   |   0.03442    | 15.71 |   2.864   |  0.0114   |  *  |
-|   synthetic_p_women   |  0.06727   |   0.02316    | 202.2 |   2.905   | 0.004087  | **  |
-|  perceived_p_women_1  |   0.7488   |   0.06034    | 10.35 |   12.41   | 1.513e-07 | *** |
+|      (Intercept)      |  0.07444   |   0.02123    | 103.7 |   3.506   | 0.0006736 | *** |
+|   synthetic_p_women   |  0.07028   |   0.02427    | 206.5 |   2.896   | 0.004184  | **  |
+|  perceived_p_women_1  |   0.8028   |   0.03268    |  212  |   24.57   |     0     | *** |
 
 Table: Fixed effects. Linear mixed model fit by REML 
 t-tests use  Satterthwaite approximations to degrees of freedom
@@ -1209,7 +1208,7 @@ r.squaredGLMM(m.post_manipulation)
 
 ```
 ##       R2m       R2c 
-## 0.6986316 0.7624350
+## 0.7374251 0.7537811
 ```
 
 After exposure to search results with manipulated gender proportions, estimates
