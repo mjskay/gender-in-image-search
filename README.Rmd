@@ -968,7 +968,7 @@ visreg(m.pre_manipulation, "bls_p_women")
 #In this part we examine only those who returned. 
 manipulated_perceptions_post = read.csv("data/public/manipulated_perceptions_post.csv")
 m.post_manipulation = lmer(perceived_p_women_2 ~ synthetic_p_women + perceived_p_women_1 + 
-    (perceived_p_women_1|participant), 
+    (1|participant), 
     data=manipulated_perceptions_post)
 
 summary(m.post_manipulation)
