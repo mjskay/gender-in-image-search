@@ -453,6 +453,7 @@ proportions = read.csv("data/public/filtered_bls_occupations_with_search_gender_
 #(just with slightly harder to interpret coefficients).
 m.stereotyped = glm(search_p_women ~ I(bls_p_women - 0.5), 
     family=quasibinomial, data=proportions, weights=search_n)
+
 ```
 
 This model exhibits an s-curve characteristic of the logit of a proportion and
@@ -933,6 +934,36 @@ m.pre_manipulation = lmer(perceived_p_women_1 ~ bls_p_women +
     (1|participant), 
     data=manipulated_perceptions_pre)
 
+m.pre1 = gamlss(perceived_p_women_1 ~ bls_p_women + 
+    random(participant), 
+    data=manipulated_perceptions_pre
+    )
+
+m.pre2 = gamlss(perceived_p_women_1 ~ bls_p_women + 
+    random(participant), 
+    data=manipulated_perceptions_pre,
+    family=trun(c(0, 1), NO, "both")
+    )
+
+m.pre1.5 = gamlss(perceived_p_women_1 ~ bls_p_women + 
+    random(participant), 
+    data=manipulated_perceptions_pre,
+    family=TF
+    )
+
+m.pre3 = gamlss(perceived_p_women_1 ~ bls_p_women + 
+    random(participant), 
+    data=manipulated_perceptions_pre,
+    family=trun(c(0, 1), TF, "both")
+    )
+
+ggplot(manipulated_perceptions_pre, aes(x=bls_p_women, y=perceived_p_women_1)) +
+    geom_point() +
+    geom_abline(intercept=coef(m.pre1)[[1]], slope=coef(m.pre1)[[2]], color="blue") +
+    geom_abline(intercept=coef(m.pre2)[[1]], slope=coef(m.pre2)[[2]], color="green") +
+    geom_abline(intercept=coef(m.pre1.5)[[1]], slope=coef(m.pre1.5)[[2]], color="black") +
+    geom_abline(intercept=coef(m.pre3)[[1]], slope=coef(m.pre3)[[2]], color="red")
+
 summary(m.pre_manipulation)
 ```
 
@@ -970,6 +1001,36 @@ manipulated_perceptions_post = read.csv("data/public/manipulated_perceptions_pos
 m.post_manipulation = lmer(perceived_p_women_2 ~ synthetic_p_women + perceived_p_women_1 + 
     (1|participant), 
     data=manipulated_perceptions_post)
+
+m.post1 = gamlss(perceived_p_women_2 ~ synthetic_p_women + perceived_p_women_1 + 
+    random(participant), 
+    data=manipulated_perceptions_post)
+
+m.post2 = gamlss(perceived_p_women_2 ~ synthetic_p_women + perceived_p_women_1 + 
+    random(participant), 
+    data=manipulated_perceptions_post,
+    family=trun(c(0, 1), NO, "both")
+    )
+
+m.post3 = gamlss(perceived_p_women_2 ~ synthetic_p_women + perceived_p_women_1 + 
+    random(participant), 
+    data=manipulated_perceptions_post,
+    family=trun(c(0, 1), TF, "both")
+    )
+
+ggplot(manipulated_perceptions_post, aes(x=perceived_p_women_1, y=perceived_p_women_2)) +
+    geom_point() +
+    geom_abline(intercept=coef(m.post1)[[1]], slope=coef(m.post1)[[3]], color="blue") +
+    geom_abline(intercept=coef(m.post2)[[1]], slope=coef(m.post2)[[3]], color="green") +
+    geom_abline(intercept=coef(m.post3)[[1]], slope=coef(m.post3)[[3]], color="red")
+
+ggplot(manipulated_perceptions_post, aes(x=synthetic_p_women, y=perceived_p_women_2 - perceived_p_women_1)) +
+    geom_point() +
+    geom_abline(intercept=coef(m.post1)[[1]], slope=coef(m.post1)[[2]], color="blue") +
+    geom_abline(intercept=coef(m.post2)[[1]], slope=coef(m.post2)[[2]], color="green") +
+    geom_abline(intercept=coef(m.post3)[[1]], slope=coef(m.post3)[[2]], color="red") + 
+    stat_smooth(method=lm)
+
 
 summary(m.post_manipulation)
 ```
