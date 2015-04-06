@@ -49,6 +49,7 @@ library(car)        #Anova
 library(ggplot2)    #ggplot
 library(MuMIn)      #r.squaredGLMM
 library(pander)     #pander
+library(dplyr)
 ```
 
 # Unequal representation and gender stereotypes in image search results for occupations
@@ -559,6 +560,19 @@ women in the search results at (50%, 50%). This effect corresponds to an odds
 ratio of approximately 0.77 (95% CI: [0.64, 0.93]); this means that in a
 profession with 50% women, we would expect about 45% of the images to be women
 on average (95% CI: [38.9%, 48.2%]).
+
+Let's see how this acts at different end of the scale, at 20% women and 80% women:
+
+```{r}
+predict(m.stereotyped, newdata=data.frame(bls_p_women=c(.2,.8)), 
+    type="link", se.fit=TRUE) %>%
+    as.data.frame() %>% 
+    mutate(
+        lower = inv.logit(fit - 1.96 * se.fit),
+        upper = inv.logit(fit + 1.96 * se.fit),
+        p_women = inv.logit(fit)
+    )
+```
 
 The particular combination of stereotype exaggeration and underrepresentation
 of women that we see – slight pulling at the extremes and slight bias towards
