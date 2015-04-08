@@ -50,6 +50,8 @@ library(ggplot2)    #ggplot
 library(MuMIn)      #r.squaredGLMM
 library(pander)     #pander
 library(dplyr)
+library(gamlss)
+library(gamlss.tr)
 ```
 
 # Unequal representation and gender stereotypes in image search results for occupations
