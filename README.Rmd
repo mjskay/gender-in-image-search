@@ -457,6 +457,9 @@ proportions = read.csv("data/public/filtered_bls_occupations_with_search_gender_
 m.stereotyped = glm(search_p_women ~ I(bls_p_women - 0.5), 
     family=quasibinomial, data=proportions, weights=search_n)
 
+ms2 = gamlss(cbind(search_women, search_n - search_women) ~ I(bls_p_women - 0.5), family=BB, data=proportions) 
+ms2l = gamlss(cbind(search_women, search_n - search_women) ~ I(logit(bls_p_women)), family=BB, data=proportions) 
+
 ```
 
 This model exhibits an s-curve characteristic of the logit of a proportion and
@@ -512,6 +515,8 @@ fit:
 images = read.csv("data/public/gender_labelled_images.csv")
 m.stereotyped.2 = glm(image_gender ~ I(bls_p_women - 0.5), family=binomial, data=images)
 m.nonstereotyped.2 = glm(image_gender ~ logit(bls_p_women), family=binomial, data=images)
+
+ms2 = gamlss(image_gender ~ I(bls_p_women - 0.5), family=binomial, data=images)
 
 #stop if the coefficients of these models aren't the same as the models fit above
 stopifnot(all.equal(coef(m.stereotyped), coef(m.stereotyped.2))) 
@@ -776,6 +781,19 @@ m.selected_image = glm(image_selected ~ bls_p_image_gender * image_gender * part
     professional + attractive + inappropriate + provocative + sexy + competent + trustworthy + weird, 
     data=selected_images, family=binomial)
 
+
+pred = summary(lsmeans(ref.grid(m.selected_image, list(bls_p_image_gender=0:10/10), cov.reduce=median), "bls_p_image_gender")) %>%
+    mutate(
+        p = inv.logit(lsmean),
+        p.lower = inv.logit(asymp.LCL),
+        p.upper = inv.logit(asymp.UCL)
+    )
+    
+ggplot(pred, aes(x=bls_p_image_gender, y=p)) +
+    geom_ribbon(aes(ymin=p.lower, ymax=p.upper)) +
+    geom_line()
+
+
 summary(m.selected_image)
 ```
 
@@ -821,7 +839,10 @@ ggplot(selected_images, aes(x=bls_p_image_gender, fill=factor(image_selected, le
     geom_bar(position="fill", binwidth=.1) + 
     guides(fill=guide_legend(title="image selected")) + 
     ylim(0, .4) +
-    geom_hline(yintercept=1/8, lty="dashed")        # reference line for "chance"
+    geom_hline(yintercept=1/8, lty="dashed") +       # reference line for "chance"
+    geom_ribbon(data=pred, mapping=aes(ymin=p.lower, ymax=p.upper, fill=NA), fill="skyblue", alpha=0.2) +
+    geom_line(data=pred, mapping=aes(y=p, fill=NA))
+
 ```
 
 ### Search Result Quality Rating Results
