@@ -2,4 +2,4 @@
 *.md text=auto
 *.html text=auto
 github-markdown.css linguist-vendored
-README.html
+README.html linguist-vendored
